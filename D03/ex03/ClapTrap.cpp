@@ -1,4 +1,15 @@
-#include <iostream>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/21 19:55:40 by fsidler           #+#    #+#             */
+/*   Updated: 2016/11/21 19:56:10 by fsidler          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(std::string name) : name(name), level(1)
@@ -18,7 +29,7 @@ ClapTrap::ClapTrap(ClapTrap const &src) : name(src.name)
 ClapTrap::~ClapTrap(void)
 {
     log();
-    std::cout << "The ClapTrap leave" << std::endl;
+    std::cout << "The ClapTrap leaves" << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(ClapTrap const &rhs)
@@ -26,7 +37,6 @@ ClapTrap &ClapTrap::operator=(ClapTrap const &rhs)
     if (this !=&rhs)
     {
         log();
-        std::cout << this->name << " have same characteristics of " << rhs.name << std::endl;
         this->hitPoints = rhs.hitPoints;
         this->maxHitPoints = rhs.maxHitPoints;
         this->energyPoints = rhs.energyPoints;
@@ -90,7 +100,7 @@ void    ClapTrap::rangedAttack(std::string const & target)
 {
     log();
     if (this->energyPoints > 10 && (this->energyPoints -= 10))
-        std::cout << this->name << " attacks " << target << " at range, causing " << this->rangedAttackDamage << " points of damage !" << std::endl;
+        std::cout << this->name << " attacks " << target << " at range, causing " << this->rangedAttackDamage << " points of damage!" << std::endl;
     else
         std::cout << "Not enough energy" << std::endl;
 }
@@ -99,7 +109,7 @@ void    ClapTrap::meleeAttack(std::string const & target)
 {
     log();
     if (this->energyPoints > 10 && (this->energyPoints -= 10))
-        std::cout << this->name << " attacks " << target << " at melee, causing " << this->meleeAttackDamage << " points of damage !" << std::endl;
+        std::cout << this->name << " melee attacks " << target << ", causing " << this->meleeAttackDamage << " points of damage!" << std::endl;
     else
         std::cout << "Not enough energy" << std::endl;
 }

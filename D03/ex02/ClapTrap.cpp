@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 19:50:32 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/21 19:51:19 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/11/21 19:57:02 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void    ClapTrap::rangedAttack(std::string const & target)
 {
     log();
     if (this->energyPoints > 10 && (this->energyPoints -= 10))
-        std::cout << this->name << " attacks " << target << " at range, causing " << this->rangedAttackDamage << " points of damage !" << std::endl;
+        std::cout << this->name << " attacks " << target << " at range, causing " << this->rangedAttackDamage << " points of damage!" << std::endl;
     else
         std::cout << "Not enough energy" << std::endl;
 }
@@ -109,7 +109,7 @@ void    ClapTrap::meleeAttack(std::string const & target)
 {
     log();
     if (this->energyPoints > 10 && (this->energyPoints -= 10))
-        std::cout << this->name << " attacks " << target << " at melee, causing " << this->meleeAttackDamage << " points of damage !" << std::endl;
+        std::cout << this->name << " melee attacks " << target << ", causing " << this->meleeAttackDamage << " points of damage!" << std::endl;
     else
         std::cout << "Not enough energy" << std::endl;
 }

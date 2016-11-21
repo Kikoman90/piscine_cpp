@@ -1,4 +1,15 @@
-#include <iostream>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   NinjaTrap.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/21 19:57:51 by fsidler           #+#    #+#             */
+/*   Updated: 2016/11/21 19:59:19 by fsidler          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "NinjaTrap.hpp"
 
 NinjaTrap::NinjaTrap(std::string name) : ClapTrap(name)
@@ -12,7 +23,7 @@ NinjaTrap::NinjaTrap(std::string name) : ClapTrap(name)
     this->armorDamageReduction = 0;
     std::srand(std::time(NULL));
     log();
-    std::cout << name << " cry: I'm here!" << std::endl;
+    std::cout << name << " appears out of nowhere: 'Yaaaaaa!'" << std::endl;
 }
 
 NinjaTrap::NinjaTrap(NinjaTrap const &src) : ClapTrap(src)
@@ -25,7 +36,7 @@ NinjaTrap::NinjaTrap(NinjaTrap const &src) : ClapTrap(src)
 NinjaTrap::~NinjaTrap(void)
 {
     log();
-    std::cout << name << " cry: I leave!" << std::endl;
+    std::cout << name << " vanishes in a cloud of smoke" << std::endl;
 }
 
 NinjaTrap &NinjaTrap::operator=(NinjaTrap const &rhs)
@@ -33,7 +44,6 @@ NinjaTrap &NinjaTrap::operator=(NinjaTrap const &rhs)
     if (this !=&rhs)
     {
         log();
-        std::cout << this->name << " have same characteristics of " << rhs.name << std::endl;
         this->hitPoints = rhs.hitPoints;
         this->maxHitPoints = rhs.maxHitPoints;
         this->energyPoints = rhs.energyPoints;
@@ -52,9 +62,9 @@ void    NinjaTrap::ninjaShoebox(std::string const &target)
     
     log();
     if (i == 0)
-        std::cout << this->name << " Challenge " << target << " to stand on a foot or on a wheel for as long as" << std::endl;
+        std::cout << this->name << " challenges " << target << " to stand on a foot or on a wheel for as long as it can" << std::endl;
     else if (i == 1)
-        std::cout << this->name << " Challenge " << target << " to piss farther than him." << std::endl;
+        std::cout << this->name << " challenges " << target << " to piss farther than him" << std::endl;
     else if (i == 2)
-        std::cout << this->name << " Challenge " << target << " to do the moonwalk better than him." << std::endl;
+        std::cout << this->name << " challenges " << target << " to do the moonwalk better than him" << std::endl;
 }
