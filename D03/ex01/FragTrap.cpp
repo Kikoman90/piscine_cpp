@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/21 19:49:22 by fsidler           #+#    #+#             */
+/*   Updated: 2016/11/21 19:49:42 by fsidler          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include "FragTrap.hpp"
 
@@ -28,7 +40,6 @@ FragTrap &FragTrap::operator=(FragTrap const &rhs)
     if (this !=&rhs)
     {
         log();
-        std::cout << this->name << " copies the characteristics of " << rhs.name;
         this->hitPoints = rhs.hitPoints;
         this->maxHitPoints = rhs.maxHitPoints;
         this->energyPoints = rhs.energyPoints;
@@ -109,7 +120,7 @@ void    FragTrap::meleeAttack(std::string const & target)
 void    FragTrap::makeJoke(std::string const &target)
 {
     log();
-    std::cout << this->name << " says: Times like these, I really start to question the meaning of my existence. Then I get distra-hey! What's this? This looks cool! at " << target << std::endl;
+    std::cout << this->name << " says: 'Times like these, I really start to question the meaning of my existence. Then I get distra-hey! What's this? This looks cool!' at " << target << std::endl;
 }
 
 void    FragTrap::makeSpin(std::string const &target)

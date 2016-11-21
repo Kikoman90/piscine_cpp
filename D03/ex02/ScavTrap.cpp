@@ -1,4 +1,15 @@
-#include <iostream>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/21 19:52:14 by fsidler           #+#    #+#             */
+/*   Updated: 2016/11/21 19:53:05 by fsidler          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
@@ -12,7 +23,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
     this->armorDamageReduction = 3;
     std::srand(std::time(NULL));
     log();
-    std::cout << name << " cry: I'm here!" << std::endl;
+    std::cout << name << " shouts: 'I'm here!'" << std::endl;
 }
 
 ScavTrap::ScavTrap(ScavTrap const &src) : ClapTrap(src)
@@ -25,7 +36,7 @@ ScavTrap::ScavTrap(ScavTrap const &src) : ClapTrap(src)
 ScavTrap::~ScavTrap(void)
 {
     log();
-    std::cout << name << " cry: I leave!" << std::endl;
+    std::cout << name << " shouts: 'Whatever I'm leaving!'" << std::endl;
 }
 
 ScavTrap &ScavTrap::operator=(ScavTrap const &rhs)
@@ -33,7 +44,6 @@ ScavTrap &ScavTrap::operator=(ScavTrap const &rhs)
     if (this !=&rhs)
     {
         log();
-        std::cout << this->name << " have same characteristics of " << rhs.name << std::endl;
         this->hitPoints = rhs.hitPoints;
         this->maxHitPoints = rhs.maxHitPoints;
         this->energyPoints = rhs.energyPoints;
@@ -52,9 +62,9 @@ void    ScavTrap::challengeNewcomer(std::string const &target)
     
     log();
     if (i == 0)
-        std::cout << this->name << " Challenge " << target << " to stand on a foot or on a wheel for as long as" << std::endl;
+        std::cout << this->name << " challenges " << target << " to stand on a foot or on a wheel for as long as it can" << std::endl;
     else if (i == 1)
-        std::cout << this->name << " Challenge " << target << " to piss farther than him." << std::endl;
+        std::cout << this->name << " challenges " << target << " to jump farther than him" << std::endl;
     else if (i == 2)
-        std::cout << this->name << " Challenge " << target << " to do the moonwalk better than him." << std::endl;
+        std::cout << this->name << " challenges " << target << " to do the moonwalk better than him" << std::endl;
 }
