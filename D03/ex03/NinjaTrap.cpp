@@ -1,34 +1,34 @@
 #include <iostream>
-#include "ScavTrap.hpp"
+#include "NinjaTrap.hpp"
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+NinjaTrap::NinjaTrap(std::string name) : ClapTrap(name)
 {
-    this->hitPoints = 100;
-    this->maxHitPoints = 100;
-    this->energyPoints = 50;
-    this->maxEnergyPoints = 50;
-    this->meleeAttackDamage = 20;
-    this->rangedAttackDamage = 15;
-    this->armorDamageReduction = 3;
+    this->hitPoints = 60;
+    this->maxHitPoints = 60;
+    this->energyPoints = 120;
+    this->maxEnergyPoints = 120;
+    this->meleeAttackDamage = 60;
+    this->rangedAttackDamage = 5;
+    this->armorDamageReduction = 0;
     std::srand(std::time(NULL));
     log();
     std::cout << name << " cry: I'm here!" << std::endl;
 }
 
-ScavTrap::ScavTrap(ScavTrap const &src) : ClapTrap(src)
+NinjaTrap::NinjaTrap(NinjaTrap const &src) : ClapTrap(src)
 {
     log();
     std::cout << name << " has duplicated" << std::endl;
     *this = src;
 }
 
-ScavTrap::~ScavTrap(void)
+NinjaTrap::~NinjaTrap(void)
 {
     log();
     std::cout << name << " cry: I leave!" << std::endl;
 }
 
-ScavTrap &ScavTrap::operator=(ScavTrap const &rhs)
+NinjaTrap &NinjaTrap::operator=(NinjaTrap const &rhs)
 {
     if (this !=&rhs)
     {
@@ -46,7 +46,7 @@ ScavTrap &ScavTrap::operator=(ScavTrap const &rhs)
     return (*this);
 }
 
-void    ScavTrap::challengeNewcomer(std::string const &target)
+void    NinjaTrap::ninjaShoebox(std::string const &target)
 {
     int i = rand() % 3;
     
