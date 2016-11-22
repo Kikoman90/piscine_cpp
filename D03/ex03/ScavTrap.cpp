@@ -44,6 +44,7 @@ ScavTrap &ScavTrap::operator=(ScavTrap const &rhs)
     if (this !=&rhs)
     {
         log();
+        this->name = rhs.getName();
         this->hitPoints = rhs.hitPoints;
         this->maxHitPoints = rhs.maxHitPoints;
         this->energyPoints = rhs.energyPoints;

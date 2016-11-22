@@ -19,7 +19,7 @@ ClapTrap::ClapTrap(std::string name) : name(name), level(1)
     std::cout <<"A new ClapTrap comes" << std::endl;
 }
 
-ClapTrap::ClapTrap(ClapTrap const &src) : name(src.name)
+ClapTrap::ClapTrap(ClapTrap const &src)
 {
     log();
     std::cout << name << " has duplicated" << std::endl;
@@ -34,9 +34,10 @@ ClapTrap::~ClapTrap(void)
 
 ClapTrap &ClapTrap::operator=(ClapTrap const &rhs)
 {
-    if (this !=&rhs)
+    if (this != &rhs)
     {
         log();
+        this->name = rhs.getName();
         this->hitPoints = rhs.hitPoints;
         this->maxHitPoints = rhs.maxHitPoints;
         this->energyPoints = rhs.energyPoints;
@@ -112,4 +113,8 @@ void    ClapTrap::meleeAttack(std::string const & target)
         std::cout << this->name << " melee attacks " << target << ", causing " << this->meleeAttackDamage << " points of damage!" << std::endl;
     else
         std::cout << "Not enough energy" << std::endl;
+}
+
+std::string ClapTrap::getName(void) const {
+    return (name);
 }

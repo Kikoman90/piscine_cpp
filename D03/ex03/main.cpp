@@ -12,12 +12,14 @@
 
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
+#include "NinjaTrap.hpp"
 
 int main(void)
 {
     FragTrap    FragTrap("FragTrap");
     ScavTrap    ScavT("ScavTrap");
     ScavTrap    ScavTrap2(ScavT);
+    NinjaTrap   Ninj("Ninja");
 
     FragTrap.beRepaired(20);
     FragTrap.meleeAttack("Bullymong");
@@ -38,4 +40,13 @@ int main(void)
     ScavT.challengeNewcomer("Bullymong");
     ScavT.challengeNewcomer("Bullymong");
     ScavT.beRepaired(20);
+
+    Ninj.beRepaired(20);
+    Ninj.meleeAttack("Bullymong");
+    Ninj.rangedAttack("Bullymong");
+    Ninj.takeDamage(30);
+    Ninj.ninjaShoebox(FragTrap);
+    Ninj.ninjaShoebox(ScavT);
+    Ninj.ninjaShoebox(Ninj);
+    Ninj.beRepaired(20);
 }

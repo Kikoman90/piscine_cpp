@@ -30,7 +30,8 @@ public:
     void    takeDamage(unsigned int amount);
     void    beRepaired(unsigned int amount);
 
-    std::string const   name;
+    std::string         getName(void) const;
+    std::string         name;    
 
 protected:
     ClapTrap(void);

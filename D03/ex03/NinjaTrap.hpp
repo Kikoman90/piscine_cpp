@@ -14,6 +14,8 @@
 # define NINJATRAP_HPP
 
 # include "ClapTrap.hpp"
+# include "ScavTrap.hpp"
+# include "FragTrap.hpp"
 
 class   NinjaTrap : public ClapTrap{
 
@@ -24,7 +26,10 @@ public:
 
     NinjaTrap &operator=(NinjaTrap const &rhs);
 
-    void    ninjaShoebox(std::string const &target);
+    void ninjaShoebox(ScavTrap const &scav) const;
+    void ninjaShoebox(FragTrap const &frag) const;
+    void ninjaShoebox(NinjaTrap const &ninja) const;
+    void ninjaShoebox(ClapTrap const &clap) const;
 
 private:
     NinjaTrap(void);

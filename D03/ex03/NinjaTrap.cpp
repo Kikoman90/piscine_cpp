@@ -41,9 +41,10 @@ NinjaTrap::~NinjaTrap(void)
 
 NinjaTrap &NinjaTrap::operator=(NinjaTrap const &rhs)
 {
-    if (this !=&rhs)
+    if (this != &rhs)
     {
         log();
+        this->name = rhs.getName();
         this->hitPoints = rhs.hitPoints;
         this->maxHitPoints = rhs.maxHitPoints;
         this->energyPoints = rhs.energyPoints;
@@ -56,15 +57,30 @@ NinjaTrap &NinjaTrap::operator=(NinjaTrap const &rhs)
     return (*this);
 }
 
-void    NinjaTrap::ninjaShoebox(std::string const &target)
+void    NinjaTrap::ninjaShoebox(const NinjaTrap &ninja) const
 {
-    int i = rand() % 3;
-    
     log();
-    if (i == 0)
-        std::cout << this->name << " challenges " << target << " to stand on a foot or on a wheel for as long as it can" << std::endl;
-    else if (i == 1)
-        std::cout << this->name << " challenges " << target << " to piss farther than him" << std::endl;
-    else if (i == 2)
-        std::cout << this->name << " challenges " << target << " to do the moonwalk better than him" << std::endl;
+    std::cout << "Yaaaaaa Ninja!" << std::endl;
+    ninja.getName();
+}
+
+void    NinjaTrap::ninjaShoebox(const ScavTrap &scav) const
+{
+    log();
+    std::cout << "We will never be scaves! i mean... slaves" << std::endl;
+    scav.getName();
+}
+
+void    NinjaTrap::ninjaShoebox(const FragTrap &frag) const
+{
+    log();
+    std::cout << "fraggedy frag i'm the fragtrap!" << std::endl;
+    frag.getName();
+}
+
+void    NinjaTrap::ninjaShoebox(const ClapTrap &clap) const
+{
+    log();
+    std::cout << "*clap clap clap* wait how do i even clap with my tiny robotic arms?" << std::endl;
+    clap.getName();
 }
