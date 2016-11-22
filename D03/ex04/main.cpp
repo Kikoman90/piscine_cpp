@@ -13,6 +13,7 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 #include "NinjaTrap.hpp"
+#include "SuperTrap.hpp"
 
 int main(void)
 {
@@ -20,6 +21,7 @@ int main(void)
     ScavTrap    ScavT("ScavTrap");
     ScavTrap    ScavTrap2(ScavT);
     NinjaTrap   Ninj("Ninja");
+    SuperTrap   Sup("LameLmao");
 
     FragTrap.beRepaired(20);
     FragTrap.meleeAttack("Bullymong");
@@ -48,4 +50,17 @@ int main(void)
     Ninj.ninjaShoebox(ScavT);
     Ninj.ninjaShoebox(Ninj);
     Ninj.beRepaired(20);
+
+    Sup.beRepaired(20);
+    Sup.meleeAttack("Bullymong");
+    Sup.rangedAttack("Bullymong");
+    Sup.takeDamage(30);
+    Sup.ninjaShoebox(FragTrap);
+    Sup.ninjaShoebox(ScavT);
+    Sup.ninjaShoebox(Ninj);
+    Sup.beRepaired(20);
+    Sup.vaulthunter_dot_exe("Bullymong");
+    Sup.vaulthunter_dot_exe("Bullymong");
+    Sup.vaulthunter_dot_exe("Bullymong");
+    Sup.vaulthunter_dot_exe("Bullymong");
 }
