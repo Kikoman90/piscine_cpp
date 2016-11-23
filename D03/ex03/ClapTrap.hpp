@@ -6,12 +6,12 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 19:57:09 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/21 19:57:16 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/11/23 13:55:20 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ClapTrap_HPP
-# define ClapTrap_HPP
+#ifndef CLAPTRAP_HPP
+# define CLAPTRAP_HPP
 
 # include <iostream>
 # include <string>
