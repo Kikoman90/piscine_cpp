@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   SuperMutant.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 05:21:51 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/24 05:21:52 by fsidler          ###   ########.fr       */
+/*   Created: 2016/11/24 05:23:08 by fsidler           #+#    #+#             */
+/*   Updated: 2016/11/24 05:23:09 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Sorcerer.hpp"
-#include "Victim.hpp"
-#include "Peon.hpp"
+#ifndef SUPER_MUTANT_HPP
+# define SUPER_MUTANT_HPP
 
-int main()
-{
-    Sorcerer    Sorc("Robert", "the Magnificent");
-    
-    Victim      Vict("Pierre-Baptiste");
-    Peon        Pe("Jerem");
+#include "Enemy.hpp"
 
-    std::cout << Sorc << Vict << Pe;
+class SuperMutant : public Enemy {
 
-    Sorc.polymorph(Vict);
-    Sorc.polymorph(Pe);
+    public:
+        SuperMutant(void);
+        SuperMutant(SuperMutant const &src);
+        ~SuperMutant(void);
 
-    return 0;
-}
+        SuperMutant     &operator=(SuperMutant const &rhs);
+
+        void            takeDamage(int);
+
+    private:
+
+};
+
+#endif

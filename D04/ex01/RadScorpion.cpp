@@ -1,40 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Peon.cpp                                           :+:      :+:    :+:   */
+/*   RadScorpion.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 05:21:02 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/24 05:21:04 by fsidler          ###   ########.fr       */
+/*   Created: 2016/11/24 05:22:55 by fsidler           #+#    #+#             */
+/*   Updated: 2016/11/24 05:22:55 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Peon.hpp"
+#include "RadScorpion.hpp"
 
-Peon::Peon(std::string const name) : Victim(name)
+RadScorpion::RadScorpion(void) : Enemy(80, "RadScorpion")
 {
-    std::cout << "Zog zog." << std::endl;
+    std::cout << "* click click click *" << std::endl;
 }
 
-Peon::Peon(Peon const &src) : Victim(src)
+RadScorpion::RadScorpion(RadScorpion const &src) : Enemy(src)
 {
     *this = src;
 }
 
-Peon::~Peon(void)
+RadScorpion::~RadScorpion(void)
 {
-    std::cout << "Bleuark..." << std::endl;
+    std::cout << "* SPROTCH *" << std::endl;
 }
 
-void        Peon::getPolymorphed(void) const
-{
-    std::cout << this->getName() << " has been turned into a pink pony !" << std::endl;
-}
-
-Peon        &Peon::operator=(Peon const &rhs)
+RadScorpion     &RadScorpion::operator=(RadScorpion const &rhs)
 {
     if (this != &rhs)
-        this->setName(rhs.getName());
+    {
+        this->setType(rhs.getType());
+        this->setHP(rhs.getHP());
+    }
     return (*this);
 }

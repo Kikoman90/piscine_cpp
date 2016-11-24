@@ -1,40 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Peon.cpp                                           :+:      :+:    :+:   */
+/*   PowerFist.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 05:21:02 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/24 05:21:04 by fsidler          ###   ########.fr       */
+/*   Created: 2016/11/24 05:22:45 by fsidler           #+#    #+#             */
+/*   Updated: 2016/11/24 05:22:46 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Peon.hpp"
+#include "PowerFist.hpp"
 
-Peon::Peon(std::string const name) : Victim(name)
+PowerFist::PowerFist(void) : AWeapon("Power Fist", 8, 50)
 {
-    std::cout << "Zog zog." << std::endl;
+    return ;
 }
 
-Peon::Peon(Peon const &src) : Victim(src)
+PowerFist::PowerFist(PowerFist const &src) : AWeapon(src)
 {
     *this = src;
 }
 
-Peon::~Peon(void)
+PowerFist::~PowerFist(void)
 {
-    std::cout << "Bleuark..." << std::endl;
+    return ;
 }
 
-void        Peon::getPolymorphed(void) const
-{
-    std::cout << this->getName() << " has been turned into a pink pony !" << std::endl;
-}
-
-Peon        &Peon::operator=(Peon const &rhs)
+PowerFist       &PowerFist::operator=(PowerFist const &rhs)
 {
     if (this != &rhs)
+    {
         this->setName(rhs.getName());
+        this->setAPCost(rhs.getAPCost());
+        this->setDamage(rhs.getDamage());
+    }
     return (*this);
+}
+
+void            PowerFist::attack(void) const
+{
+    std::cout << "* pschhh... SBAM! *" << std::endl;
 }

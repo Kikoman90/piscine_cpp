@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   PowerFist.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 05:21:51 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/24 05:21:52 by fsidler          ###   ########.fr       */
+/*   Created: 2016/11/24 05:22:50 by fsidler           #+#    #+#             */
+/*   Updated: 2016/11/24 05:22:51 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Sorcerer.hpp"
-#include "Victim.hpp"
-#include "Peon.hpp"
+#ifndef POWER_FIST_HPP
+# define POWER_FIST_HPP
 
-int main()
-{
-    Sorcerer    Sorc("Robert", "the Magnificent");
-    
-    Victim      Vict("Pierre-Baptiste");
-    Peon        Pe("Jerem");
+#include "AWeapon.hpp"
 
-    std::cout << Sorc << Vict << Pe;
+class PowerFist : public AWeapon {
 
-    Sorc.polymorph(Vict);
-    Sorc.polymorph(Pe);
+    public:
+        PowerFist(void);
+        PowerFist(PowerFist const &src);
+        ~PowerFist(void);
 
-    return 0;
-}
+        PowerFist     &operator=(PowerFist const &rhs);
+        
+        void            attack(void) const;
+
+    private:
+};
+
+#endif

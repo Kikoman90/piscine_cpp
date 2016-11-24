@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   PlasmaRifle.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 05:21:51 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/24 05:21:52 by fsidler          ###   ########.fr       */
+/*   Created: 2016/11/24 05:22:39 by fsidler           #+#    #+#             */
+/*   Updated: 2016/11/24 05:22:40 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Sorcerer.hpp"
-#include "Victim.hpp"
-#include "Peon.hpp"
+#ifndef PLASMA_RIFLE_HPP
+# define PLASMA_RIFLE_HPP
 
-int main()
-{
-    Sorcerer    Sorc("Robert", "the Magnificent");
-    
-    Victim      Vict("Pierre-Baptiste");
-    Peon        Pe("Jerem");
+#include "AWeapon.hpp"
 
-    std::cout << Sorc << Vict << Pe;
+class PlasmaRifle : public AWeapon {
 
-    Sorc.polymorph(Vict);
-    Sorc.polymorph(Pe);
+    public:
+        PlasmaRifle(void);
+        PlasmaRifle(PlasmaRifle const &src);
+        ~PlasmaRifle(void);
 
-    return 0;
-}
+        PlasmaRifle     &operator=(PlasmaRifle const &rhs);
+        
+        void            attack(void) const;
+
+    private:
+};
+
+#endif

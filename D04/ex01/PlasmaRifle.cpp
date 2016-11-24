@@ -1,40 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Peon.cpp                                           :+:      :+:    :+:   */
+/*   PlasmaRifle.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 05:21:02 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/24 05:21:04 by fsidler          ###   ########.fr       */
+/*   Created: 2016/11/24 05:22:32 by fsidler           #+#    #+#             */
+/*   Updated: 2016/11/24 05:22:33 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Peon.hpp"
+#include "PlasmaRifle.hpp"
 
-Peon::Peon(std::string const name) : Victim(name)
+PlasmaRifle::PlasmaRifle(void) : AWeapon("Plasma Rifle", 5, 21)
 {
-    std::cout << "Zog zog." << std::endl;
+    return ;
 }
 
-Peon::Peon(Peon const &src) : Victim(src)
+PlasmaRifle::PlasmaRifle(PlasmaRifle const &src) : AWeapon(src)
 {
     *this = src;
 }
 
-Peon::~Peon(void)
+PlasmaRifle::~PlasmaRifle(void)
 {
-    std::cout << "Bleuark..." << std::endl;
+    return ;
 }
 
-void        Peon::getPolymorphed(void) const
-{
-    std::cout << this->getName() << " has been turned into a pink pony !" << std::endl;
-}
-
-Peon        &Peon::operator=(Peon const &rhs)
+PlasmaRifle     &PlasmaRifle::operator=(PlasmaRifle const &rhs)
 {
     if (this != &rhs)
+    {
         this->setName(rhs.getName());
+        this->setAPCost(rhs.getAPCost());
+        this->setDamage(rhs.getDamage());
+    }
     return (*this);
+}
+
+void            PlasmaRifle::attack(void) const
+{
+    std::cout << "* piouuu piouuu piouuu *" << std::endl;
 }
