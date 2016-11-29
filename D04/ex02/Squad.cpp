@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Squad.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/29 20:43:38 by fsidler           #+#    #+#             */
+/*   Updated: 2016/11/29 20:43:39 by fsidler          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Squad.hpp"
 
 Squad::Squad(void) : _list(NULL)
 {
+    this->_list = NULL;
     return ;
 }
 
 Squad::Squad(Squad const &src)
 {
-    _freeUnitList();
     *this = src;
 }
 
@@ -50,7 +62,7 @@ int                     Squad::push(ISpaceMarine *SpcMarine)
 {
     t_unit      *tmp = this->_list;
     t_unit      *newUnit = new t_unit();
-    bool        alreadyExists = false;
+    bool        doesNotAlreadyExist = true;
 
     newUnit->SpaceMarine = SpcMarine;
     newUnit->next = NULL;
@@ -62,17 +74,16 @@ int                     Squad::push(ISpaceMarine *SpcMarine)
     }
     while (_list->next)
     {
-        if (SpcMarine && tmp->SpaceMarine == SpcMarine)
-            alreadyExists = true;
+        if (!SpcMarine || _list->SpaceMarine == SpcMarine)
+            doesNotAlreadyExist = false;
         _list = _list->next;
     }
-    if (SpcMarine && alreadyExists != true)
+    if (SpcMarine && doesNotAlreadyExist != false)
     {
         newUnit->index = (_list->index + 1);
         _list->next = newUnit;
-        _list = tmp;
-
     }
+    _list = tmp;
     return (this->getCount());
 }
 
@@ -102,4 +113,5 @@ void                    Squad::_freeUnitList(void)
         delete first;
         first = tmp;
     }
+    this->_list = NULL;
 }

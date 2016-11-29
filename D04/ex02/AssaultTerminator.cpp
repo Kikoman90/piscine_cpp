@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AssaultTerminator.cpp                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/29 20:41:32 by fsidler           #+#    #+#             */
+/*   Updated: 2016/11/29 20:41:33 by fsidler          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "AssaultTerminator.hpp"
 
 AssaultTerminator::AssaultTerminator(void)
@@ -12,7 +24,7 @@ AssaultTerminator::AssaultTerminator(AssaultTerminator const &src)
 
 AssaultTerminator::~AssaultTerminator(void)
 {
-    std::cout << "I'll be back ...'" << std::endl;
+    std::cout << "I'll be back ..." << std::endl;
 }
 
 AssaultTerminator              &AssaultTerminator::operator=(AssaultTerminator const &rhs)
