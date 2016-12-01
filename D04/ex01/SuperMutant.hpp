@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   SuperMutant.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 05:23:08 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/24 05:23:09 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/11/30 20:37:29 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SUPER_MUTANT_HPP
 # define SUPER_MUTANT_HPP
 
-#include "Enemy.hpp"
+# include "Enemy.hpp"
 
 class SuperMutant : public Enemy {
 

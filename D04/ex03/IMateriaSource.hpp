@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PlasmaRifle.hpp                                    :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 05:22:39 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/30 20:37:16 by fsidler          ###   ########.fr       */
+/*   Created: 2016/12/01 14:30:17 by fsidler           #+#    #+#             */
+/*   Updated: 2016/12/01 17:32:34 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLASMA_RIFLE_HPP
-# define PLASMA_RIFLE_HPP
+#ifndef I_MATERIA_SOURCE_HPP
+# define I_MATERIA_SOURCE_HPP
 
-# include "AWeapon.hpp"
+# include "AMateria.hpp"
 
-class PlasmaRifle : public AWeapon {
+class IMateriaSource {
 
     public:
-        PlasmaRifle(void);
-        PlasmaRifle(PlasmaRifle const &src);
-        ~PlasmaRifle(void);
+        virtual ~IMateriaSource() {}
+        virtual void        learnMateria(AMateria *m) = 0;
+        virtual AMateria    *createMateria(std::string const & type) = 0;
 
-        PlasmaRifle     &operator=(PlasmaRifle const &rhs);
-        
-        void            attack(void) const;
-
-    private:
 };
 
 #endif

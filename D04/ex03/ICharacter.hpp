@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PlasmaRifle.hpp                                    :+:      :+:    :+:   */
+/*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 05:22:39 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/30 20:37:16 by fsidler          ###   ########.fr       */
+/*   Created: 2016/11/30 20:34:22 by fsidler           #+#    #+#             */
+/*   Updated: 2016/12/01 17:33:28 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLASMA_RIFLE_HPP
-# define PLASMA_RIFLE_HPP
+#ifndef I_CHARACTER_HPP
+# define I_CHARACTER_HPP
 
-# include "AWeapon.hpp"
+# include <iostream>
+# include "AMateria.hpp"
 
-class PlasmaRifle : public AWeapon {
+class AMateria;
 
+class ICharacter
+{
     public:
-        PlasmaRifle(void);
-        PlasmaRifle(PlasmaRifle const &src);
-        ~PlasmaRifle(void);
+        virtual ~ICharacter() {}
 
-        PlasmaRifle     &operator=(PlasmaRifle const &rhs);
-        
-        void            attack(void) const;
+        virtual void                equip(AMateria* m) = 0;
+        virtual void                unequip(int idx) = 0;
+        virtual void                use(int idx, ICharacter& target) = 0;
 
-    private:
+        virtual std::string const   &getName(void) const = 0;
 };
 
 #endif

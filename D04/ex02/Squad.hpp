@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Squad.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 20:43:42 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/29 20:43:43 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/11/30 20:36:54 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SQUAD_HPP
 # define SQUAD_HPP
 
-#include "ISquad.hpp"
+# include "ISquad.hpp"
 
 typedef struct      s_unit
 {
