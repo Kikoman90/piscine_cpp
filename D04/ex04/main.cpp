@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 16:03:46 by fsidler           #+#    #+#             */
-/*   Updated: 2016/12/02 16:21:05 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/12/03 15:03:42 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ int         main()
     std::cout << "_creating 2 lasers_" << std::endl;
     IMiningLaser    *laser1 = new DeepCoreMiner();
     IMiningLaser    *laser2 = new StripMiner();
+
+    std::cout << "_mining with no laser equipped_" << std::endl;
+    barge->mine(ast1);
 
     std::cout << "_equipping barge with lasers_" << std::endl;
     barge->equip(laser1);
