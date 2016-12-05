@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/03 15:41:46 by fsidler           #+#    #+#             */
-/*   Updated: 2016/12/05 15:33:58 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/12/05 21:14:36 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include <iostream>
 # include <string>
 # include <exception>
+
+# include "Form.hpp"
+
+class Form;
 
 class Bureaucrat {
 
@@ -55,6 +59,8 @@ class Bureaucrat {
         ~Bureaucrat();
 
         Bureaucrat          &operator=(Bureaucrat const &rhs);
+
+        void                signForm(Form &form);
 
         void                incGrade();
         void                decGrade();

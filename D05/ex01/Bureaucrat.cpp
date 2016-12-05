@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/03 16:12:31 by fsidler           #+#    #+#             */
-/*   Updated: 2016/12/05 15:34:35 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/12/05 20:54:36 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,20 @@ int                 Bureaucrat::getGrade() const
     return (this->_grade);
 }
 
+void                Bureaucrat::signForm(Form &form)
+{
+    try
+    {
+        form.beSigned(*this);
+        std::cout << this->getName() << " signs " << form.getName() << "." << std::endl;
+    }
+    catch (std::exception &e)
+    {
+        std::cout << this->getName() << " cannot sign " << form.getName() << " because "
+        << e.what() << std::endl;
+    }
+}
+
 std::ostream        &operator<<(std::ostream &o, Bureaucrat const &rhs)
 {
     o << rhs.getName() << ", bureaucrat grade " << rhs.getGrade() << "." << std::endl;
@@ -91,7 +105,7 @@ Bureaucrat::GradeTooHighException   &Bureaucrat::GradeTooHighException::operator
 
 const char * Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("Grade of bureaucrat is too high!");
+	return ("grade of bureaucrat is too high!");
 }
 
 Bureaucrat::GradeTooLowException::GradeTooLowException()
@@ -117,5 +131,5 @@ Bureaucrat::GradeTooLowException   &Bureaucrat::GradeTooLowException::operator=(
 
 const char * Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("Grade of bureaucrat is too low!");
+	return ("grade of bureaucrat is too low!");
 }
