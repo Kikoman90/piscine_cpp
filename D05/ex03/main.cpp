@@ -1,0 +1,90 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/12/03 17:23:23 by fsidler           #+#    #+#             */
+/*   Updated: 2016/12/08 12:47:10 by fsidler          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
+#include "Intern.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+
+int     main(void)
+{
+	std::cout << "_creating the 3 different forms_" << std::endl;
+	ShrubberyCreationForm	shrubbery_form("elysee");
+	RobotomyRequestForm		robotomy_form("Patrick");
+	PresidentialPardonForm	presidential_form("DSK");
+	Bureaucrat				president("president", 1);
+	Bureaucrat				premier_ministre("1er ministre", 50);
+	Bureaucrat				stagiaire("stagiaire", 146);
+
+	std::cout << "_signing and executing PresidentialPardonForm_" << std::endl;
+	try
+	{
+		std::cout << presidential_form;
+		std::cout << president;
+		president.executeForm(presidential_form);
+		president.signForm(presidential_form);
+		president.executeForm(presidential_form);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	
+	std::cout << "_signing and executing RobotomyRequestForm_" << std::endl;
+	try
+	{
+		std::cout << robotomy_form;
+		std::cout << premier_ministre;
+		premier_ministre.signForm(robotomy_form);
+		premier_ministre.executeForm(robotomy_form);
+		president.executeForm(robotomy_form);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	
+	std::cout << "_signing and executing ShrubberyCreationForm_" << std::endl;
+	try
+	{
+		std::cout << shrubbery_form;
+		std::cout << stagiaire;
+		stagiaire.signForm(shrubbery_form);
+		premier_ministre.signForm(shrubbery_form);
+		premier_ministre.executeForm(shrubbery_form);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	std::cout << std::endl << "_testing the intern's skills_" << std::endl;
+	Intern	real_intern;
+	Form*	rrf;
+	try
+	{
+		rrf = real_intern.makeForm("robotomy request", "Manuel Vals");
+		std::cout << *rrf;
+		rrf = real_intern.makeForm("shrubbery creation", "Versailles");
+		std::cout << *rrf;
+		rrf = real_intern.makeForm("presidential pardon", "Putin");
+		std::cout << *rrf;
+		rrf = real_intern.makeForm("demission", "Hollande");
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	return (0);
+}
