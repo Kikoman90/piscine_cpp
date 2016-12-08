@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/03 17:23:23 by fsidler           #+#    #+#             */
-/*   Updated: 2016/12/08 18:07:06 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/12/08 18:49:10 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ int     main(void)
 	centralBur.queueUp("Omar le Homard");
 	centralBur.queueUp("Xavier Niel");
 	centralBur.queueUp("frederic le poto");
-	centralBur.queueUp("un gros geek bien degeu");
-	centralBur.queueUp("la mere a bsouchet");
+	centralBur.queueUp("geekos2000");
+	centralBur.queueUp("bsouchette");
 	centralBur.queueUp("France!");
 	centralBur.queueUp("Pachenko");
 	centralBur.queueUp("Putin");
