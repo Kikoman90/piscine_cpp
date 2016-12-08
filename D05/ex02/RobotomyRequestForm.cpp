@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 13:27:49 by fsidler           #+#    #+#             */
-/*   Updated: 2016/12/07 17:37:49 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/12/08 15:29:34 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void                        RobotomyRequestForm::execute(Bureaucrat const & exec
     
     i = rand() % 2;
     if (i == 1)
-        std::cout << this->_target << "has been robotomized successfully" << std::endl;
+        std::cout << this->_target << " has been robotomized successfully" << std::endl;
     else if (i == 0)
         std::cout << "robotomy of " << this->_target << " has failed" << std::endl;
 }
