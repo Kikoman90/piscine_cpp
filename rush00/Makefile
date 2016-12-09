@@ -1,29 +1,29 @@
-NAME = phonebook
+NAME = ft_retro
 
 CLANG = clang++
 
 FLAG = -Wall -Wextra -Werror
 
-SRC = utils.cpp \
-	  Contact.cpp \
-	  command.cpp \
-	  phonebook.cpp \
+SRC = main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CLANG) $(FLAG) -o $@ $^
+	@$(CLANG) $(FLAG) -o $@ $^ -lncurses
 
 %.o:%.cpp
 	@$(CLANG) $(FLAG) -c -o $@ $<
+	@echo "\033[92m[ft_retro] compilation SUCESS"
 
 clean:
 	@rm -f $(OBJ)
+	@echo "cleaning object files (.o)"
 
 fclean: clean
 	@rm -f $(NAME)
+	@echo "cleaning executable ft_retro"
 
 re: fclean all
 
