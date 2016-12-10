@@ -6,13 +6,14 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 14:35:38 by fsidler           #+#    #+#             */
-/*   Updated: 2016/12/10 17:44:36 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/12/10 18:54:21 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <ncurses.h>
 #include <time.h>
+#include <unistd.h>
 
 #define HEIGHT height
 #define WIDTH width
@@ -78,6 +79,7 @@ int main()
 	//int highlight = 1;
 	//int choice = 0;
 	int c;
+    int timer = 120;
 
     srand(time(NULL));
 	initscr();
@@ -91,9 +93,14 @@ int main()
 	refresh();
     print_env();
 	//print_menu(stdscr, highlight);
-	while((c = wgetch(stdscr)) != 27)
+    wmove(stdscr, 1, 1);
+	while((c = wgetch(stdscr)) != 27 && timer > 0)
 	{
-        ;
+        wprintw(stdscr, "%i", timer);
+        refresh();
+        //erase(); //CREER UNE NOUVELLE WINDOW POUR LE TIMER?!
+        timer--;
+        sleep(1);
         /*switch(c)
 		{	case KEY_UP:
 				if(highlight == 1)
