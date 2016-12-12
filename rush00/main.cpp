@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 14:35:38 by fsidler           #+#    #+#             */
-/*   Updated: 2016/12/10 18:54:21 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/12/12 14:45:43 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,17 @@ void    print_env(void)
     int x = 0;
     int y = 0;
     int i = 0;
-    int height;
-    int width;
+	int	height;
+	int	width;
 
-    //start_color();
+    start_color();
+	init_color(COLOR_BLACK, 100, 100, 100);
+	init_color(COLOR_RED, 1000, 1000, 1000);
+	init_pair(1, COLOR_BLACK, COLOR_BLACK);
+	init_pair(2, COLOR_BLACK, COLOR_RED);
+	clear();
     box(stdscr, 0, 0);
+	wrefresh(stdscr);
     getmaxyx(stdscr, height, width);
     while (++y < HEIGHT)
     {
@@ -62,95 +68,53 @@ void    print_env(void)
         while (++x < WIDTH)
         {
             i = rand() % 100;
-            wmove(stdscr, y, x); // ou move(y, x); meme chose ;)
+            wmove(stdscr, y, x);
             if (i < 4)
-                waddch(stdscr, '+' | A_DIM);
+                waddch(stdscr, '+' | A_DIM | COLOR_PAIR(2));
             else if (i > 98)
-                waddch(stdscr, ACS_DEGREE | A_DIM);        
+                waddch(stdscr, ACS_DEGREE | A_DIM | COLOR_PAIR(2));
             x++;
         }
         y++;
     }
+	mvwprintw(stdscr, 1, 4, "|");
+	mvwprintw(stdscr, 2, 1, "---");
+	wmove(stdscr, 2, 4);
+	waddch(stdscr, ACS_LRCORNER);
     wrefresh(stdscr);
+	wmove(stdscr, 1, 1);
 }
 
 int main()
 {
-	//int highlight = 1;
-	//int choice = 0;
-	int c;
-    int timer = 120;
+    //int timer = 120;
 
     srand(time(NULL));
+	
 	initscr();
-	clear();
 	noecho();
-	cbreak();	/* Line buffering disabled. pass on everything */
+	cbreak(); /* Line buffering disabled. pass on everything */
+	keypad(stdscr, TRUE);
+	nodelay(stdscr, TRUE);
     
 	//menu_win = newwin(HEIGHT, WIDTH, starty, startx);
-	keypad(stdscr, TRUE);
-    //print  a string: mvprintw(1, 0, "Use arrow keys to go up and down, Press enter to select a choice");
-	refresh();
+    //print  a string at (1, 1): mvprintw(1, 1, "string");
     print_env();
-	//print_menu(stdscr, highlight);
-    wmove(stdscr, 1, 1);
-	while((c = wgetch(stdscr)) != 27 && timer > 0)
+	while(wgetch(stdscr) != 27)/* && timer > 0)*/
 	{
-        wprintw(stdscr, "%i", timer);
-        refresh();
-        //erase(); //CREER UNE NOUVELLE WINDOW POUR LE TIMER?!
-        timer--;
-        sleep(1);
-        /*switch(c)
-		{	case KEY_UP:
-				if(highlight == 1)
-					highlight = n_choices;
-				else
-					--highlight;
-				break;
-			case KEY_DOWN:
-				if(highlight == n_choices)
-					highlight = 1;
-				else 
-					++highlight;
-				break;
-			case 10:
-				choice = highlight;
-				break;
-			default:
-				mvprintw(24, 0, "Charcter pressed is = %3d Hopefully it can be printed as '%c'", c, c);
-				refresh();
-				break;
-		}
-		print_menu(stdscr, highlight);
-		if(choice != 0) //User did a choice come out of the infinite loop
-	    {
-            mvprintw(3, 0, "You chose choice %d with choice string %s\n", choice, choices[choice - 1]);
-			break;
-        }*/
+		;
+        //wprintw(stdscr, "%i", timer);
+        //wrefresh(stdscr);
+        //werase(stdscr);
+        //timer--;
+        //sleep(1);
 	}
-	clrtoeol();
-	refresh();
+	wclear(stdscr);
+	wrefresh(stdscr);
 	endwin();
 	return 0;
 }
 
-/*void print_menu(WINDOW *menu_win, int highlight)
-{
-	int x, y, i;	
-
-	x = 2;
-	y = 2;
-	box(menu_win, 0, 0);
-	for(i = 0; i < n_choices; ++i)
-	{	if(highlight == i + 1) High light the present choice
-		{	wattron(menu_win, A_REVERSE); 
-			mvwprintw(menu_win, y, x, "%s", choices[i]);
-			wattroff(menu_win, A_REVERSE);
-		}
-		else
-			mvwprintw(menu_win, y, x, "%s", choices[i]);
-		++y;
-	}
-	wrefresh(menu_win);
-}*/
+/*wattron(menu_win, A_REVERSE); 
+mvwprintw(menu_win, y, x, "%s", choices[i]);
+wattroff(menu_win, A_REVERSE);*/
