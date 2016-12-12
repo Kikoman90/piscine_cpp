@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 14:35:38 by fsidler           #+#    #+#             */
-/*   Updated: 2016/12/12 14:45:43 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/12/12 19:02:25 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <ncurses.h>
 #include <time.h>
 #include <unistd.h>
+#include <fstream>
 
 #define HEIGHT height
 #define WIDTH width
@@ -45,24 +46,32 @@ void print_menu(WINDOW *menu_win, int highlight);*/
        ACS_URCORNER            upper right-hand corner
        ACS_VLINE               vertical line*/
 
+std::string     fill_background()
+{
+    std::ofstream   file("env/background.env");
+    
+    file.open()
+    
+    file.close();
+    
+}
+
 void    print_env(void)
 {
-    int x = 0;
-    int y = 0;
+    int x;
+    int y = 1;
     int i = 0;
 	int	height;
 	int	width;
 
     start_color();
-	init_color(COLOR_BLACK, 100, 100, 100);
-	init_color(COLOR_RED, 1000, 1000, 1000);
-	init_pair(1, COLOR_BLACK, COLOR_BLACK);
-	init_pair(2, COLOR_BLACK, COLOR_RED);
-	clear();
+	init_color(COLOR_YELLOW, 220, 220, 220);
+	init_pair(1, COLOR_WHITE, COLOR_BLACK);
+	init_pair(2, COLOR_YELLOW, COLOR_BLACK);
+    bkgdset(COLOR_PAIR(1));
     box(stdscr, 0, 0);
-	wrefresh(stdscr);
     getmaxyx(stdscr, height, width);
-    while (++y < HEIGHT)
+    while (++y < HEIGHT - 1)
     {
         x = 1;
         while (++x < WIDTH)
@@ -70,24 +79,24 @@ void    print_env(void)
             i = rand() % 100;
             wmove(stdscr, y, x);
             if (i < 4)
-                waddch(stdscr, '+' | A_DIM | COLOR_PAIR(2));
+                waddch(stdscr, '+' | COLOR_PAIR(2));
             else if (i > 98)
-                waddch(stdscr, ACS_DEGREE | A_DIM | COLOR_PAIR(2));
+                waddch(stdscr, ACS_DEGREE | COLOR_PAIR(2));
             x++;
         }
         y++;
     }
-	mvwprintw(stdscr, 1, 4, "|");
-	mvwprintw(stdscr, 2, 1, "---");
-	wmove(stdscr, 2, 4);
+    mvwprintw(stdscr, 1, 1, "time:");
+	mvwprintw(stdscr, 1, 10, "|");
+	mvwprintw(stdscr, 2, 1, "---------");
+	wmove(stdscr, 2, 10);
 	waddch(stdscr, ACS_LRCORNER);
     wrefresh(stdscr);
-	wmove(stdscr, 1, 1);
 }
 
 int main()
 {
-    //int timer = 120;
+    int timer = 120;
 
     srand(time(NULL));
 	
@@ -96,25 +105,18 @@ int main()
 	cbreak(); /* Line buffering disabled. pass on everything */
 	keypad(stdscr, TRUE);
 	nodelay(stdscr, TRUE);
-    
-	//menu_win = newwin(HEIGHT, WIDTH, starty, startx);
-    //print  a string at (1, 1): mvprintw(1, 1, "string");
     print_env();
-	while(wgetch(stdscr) != 27)/* && timer > 0)*/
+	while(wgetch(stdscr) != 27 && timer > 0)
 	{
-		;
-        //wprintw(stdscr, "%i", timer);
-        //wrefresh(stdscr);
-        //werase(stdscr);
-        //timer--;
-        //sleep(1);
+        print_env();
+        mvwprintw(stdscr, 1, 7, "%i", timer);
+        wrefresh(stdscr);
+        werase(stdscr);
+        timer--;
+        sleep(1);
 	}
 	wclear(stdscr);
 	wrefresh(stdscr);
 	endwin();
 	return 0;
 }
-
-/*wattron(menu_win, A_REVERSE); 
-mvwprintw(menu_win, y, x, "%s", choices[i]);
-wattroff(menu_win, A_REVERSE);*/
