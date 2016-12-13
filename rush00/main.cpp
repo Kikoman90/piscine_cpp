@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 14:35:38 by fsidler           #+#    #+#             */
-/*   Updated: 2016/12/13 15:07:56 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/12/13 15:16:46 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void    fill_background(int height, int width)
     while (size--)
     {
         i = rand() % 100;
-        if (i < 4)
+        if (i < 2)
             file << '+';
         else if (i > 98)
-            file << '*';
+            file << '.';
         else
             file << ' ';
     }
@@ -52,7 +52,7 @@ std::string     read_background()
 void    print_env(std::string bkgd)
 {
     wattron(stdscr, COLOR_PAIR(2));
-    mvwaddstr(stdscr, 1, 1, bkgd.c_str());
+    mvwaddstr(stdscr, 1, 10, bkgd.c_str());
     wattroff(stdscr, COLOR_PAIR(2));
     box(stdscr, 0, 0);
     mvwprintw(stdscr, 1, 1, "time:");
@@ -72,7 +72,9 @@ void    init_display(int timer, int height, int width)
 	keypad(stdscr, TRUE);
 	nodelay(stdscr, TRUE);
     start_color();
-	init_color(COLOR_YELLOW, 220, 220, 220);
+    init_color(COLOR_WHITE, 1000, 700, 300);
+    init_color(COLOR_BLACK, 0, 0, 0);
+	init_color(COLOR_YELLOW, 220, 160, 110);
 	init_pair(1, COLOR_WHITE, COLOR_BLACK);
 	init_pair(2, COLOR_YELLOW, COLOR_BLACK);
     bkgdset(COLOR_PAIR(1));
