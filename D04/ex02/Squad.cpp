@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Squad.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 20:43:38 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/29 20:43:39 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/12/15 17:51:32 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,14 @@ Squad::Squad(void) : _list(NULL)
 
 Squad::Squad(Squad const &src)
 {
-    *this = src;
+    t_unit  *tmp = src._list;
+
+    this->_list = NULL;
+    while (tmp)
+    {
+        this->push(tmp->SpaceMarine->clone());
+        tmp = tmp->next;
+    }
 }
 
 Squad::~Squad(void)
@@ -37,7 +44,7 @@ Squad                  &Squad::operator=(Squad const &rhs)
         this->_freeUnitList();
         while (tmp)
         {
-            this->push(tmp->SpaceMarine);
+            this->push(tmp->SpaceMarine->clone());
             tmp = tmp->next;
         }
     }
@@ -64,6 +71,8 @@ int                     Squad::push(ISpaceMarine *SpcMarine)
     t_unit      *newUnit = new t_unit();
     bool        doesNotAlreadyExist = true;
 
+    if (!SpcMarine)
+        return (this->getCount());
     newUnit->SpaceMarine = SpcMarine;
     newUnit->next = NULL;
     if (!_list)

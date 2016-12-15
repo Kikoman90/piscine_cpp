@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 14:32:01 by fsidler           #+#    #+#             */
-/*   Updated: 2016/12/01 18:11:49 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/12/15 18:26:53 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ class MateriaSource : public IMateriaSource {
 
         void                learnMateria(AMateria*);
         AMateria            *createMateria(std::string const &type);
-
-        AMateria            *getMat(int idx) const;
 };
 
 #endif

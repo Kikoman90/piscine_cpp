@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 20:46:02 by fsidler           #+#    #+#             */
-/*   Updated: 2016/12/01 18:12:17 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/12/15 18:31:37 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,20 @@ Character::Character(std::string const name) : _name(name)
 
 Character::Character(Character const &src)
 {
-    *this = src;
+    int     i;
+
+    i = 0;
+    this->_name = src.getName();
+    this->_inv[0] = NULL;
+    this->_inv[1] = NULL;
+    this->_inv[2] = NULL;
+    this->_inv[3] = NULL;
+    while (i < 4)
+    {
+        if (src._inv[i])
+            this->equip(src._inv[i]->clone());
+        i++;
+    }
 }
 
 Character::~Character(void)
@@ -42,8 +55,8 @@ Character               &Character::operator=(Character const &rhs)
         this->_name = rhs.getName();
         while (i < 4)
         {
-            if (rhs.getInv(i))
-                this->_inv[i] = rhs.getInv(i);
+            if (rhs._inv[i])
+                this->equip(rhs._inv[i]->clone());
             i++;
         }
     }
@@ -53,11 +66,6 @@ Character               &Character::operator=(Character const &rhs)
 std::string const       &Character::getName() const
 {
     return (this->_name);
-}
-
-AMateria                *Character::getInv(int idx) const
-{
-    return (this->_inv[idx]);
 }
 
 void                    Character::equip(AMateria *m)

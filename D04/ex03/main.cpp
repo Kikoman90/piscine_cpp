@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 19:37:47 by fsidler           #+#    #+#             */
-/*   Updated: 2016/12/01 18:43:28 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/12/15 18:26:06 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,21 @@ int main()
     zaz->equip(tmp);
     tmp = src->createMateria("cure");
     zaz->equip(tmp);
-    std::cout << "_unequip material at wrong index_" << std::endl;
     zaz->equip(tmp);
     tmp = src->createMateria("ice");
     zaz->equip(tmp);
     std::cout << "_trying to equip in a full inventory_" << std::endl;
     zaz->equip(tmp);
+    std::cout << "_unequip material at wrong index_" << std::endl;
     zaz->unequip(10);
 
     ICharacter* bob = new Character("bob");
 
-    std::cout << "XP of inv[1]: " << tmp->getXP() << std::endl;
-    zaz->use(0, *bob);
-    std::cout << "_use inv[1]_" << std::endl;
+    std::cout << "XP of inv[3]: " << tmp->getXP() << std::endl;
+    std::cout << "_use inv[3]_" << std::endl;
+    zaz->use(3, *bob);
     zaz->use(1, *bob);
-    std::cout << "XP of inv[1]: " << tmp->getXP() << std::endl;
+    std::cout << "XP of inv[3]: " << tmp->getXP() << std::endl;
     std::cout << "_unequiping inv[1]_" << std::endl;
     zaz->unequip(1);
 

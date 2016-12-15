@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 14:41:19 by fsidler           #+#    #+#             */
-/*   Updated: 2016/12/02 16:03:37 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/12/15 18:26:46 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,19 @@ MateriaSource::MateriaSource(void)
 
 MateriaSource::MateriaSource(MateriaSource const &src)
 {
-    *this = src;
+    int i;
+
+    i = 0;
+    this->_mat[0] = NULL;
+    this->_mat[1] = NULL;
+    this->_mat[2] = NULL;
+    this->_mat[3] = NULL;
+    while (i < 4)
+    {
+        if (src._mat[i])
+            this->learnMateria(src._mat[i]);
+        i++;
+    }
 }
 
 MateriaSource::~MateriaSource(void)
@@ -42,8 +54,8 @@ MateriaSource           &MateriaSource::operator=(MateriaSource const &rhs)
         this->_freeMat();
         while (i < 4)
         {
-            if (rhs.getMat(i))
-                this->_mat[i] = rhs.getMat(i);
+            if (rhs._mat[i])
+                this->learnMateria(rhs._mat[i]);
             i++;
         }
     }
@@ -89,9 +101,4 @@ void                    MateriaSource::_freeMat()
         }
         i++;
     }
-}
-
-AMateria                *MateriaSource::getMat(int idx) const
-{
-    return (this->_mat[idx]);
 }

@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 20:39:09 by fsidler           #+#    #+#             */
-/*   Updated: 2016/12/01 18:11:45 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/12/15 18:30:30 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ class Character : public ICharacter {
         Character           &operator=(Character const &rhs);
         
         std::string const   &getName() const;
-        AMateria            *getInv(int idx) const;
         
         void                equip(AMateria* m);
         void                unequip(int idx);
