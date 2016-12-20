@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 12:18:00 by fsidler           #+#    #+#             */
-/*   Updated: 2016/12/08 12:41:03 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/12/20 15:13:57 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,4 @@ Intern::InvalidFormNameException    &Intern::InvalidFormNameException::operator=
 char const                  *Intern::InvalidFormNameException::what(void) const throw()
 {
     return ("intern cannot create form because name is invalid");
-
 }
