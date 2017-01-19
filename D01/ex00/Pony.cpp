@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 13:05:39 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/03 14:03:36 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/18 16:47:00 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Pony::Pony(float height, int age, std::string name, std::string color) : _height
 void			Pony::displayPonyInfos(void) const
 {
 	std::cout << "name: " << this->_name << " | color: " << this->_color
-		<< " | age: " << this->_age << " |height: "
+		<< " | age: " << this->_age << " | height: "
 		<< this->_height << std::endl;
 }
 

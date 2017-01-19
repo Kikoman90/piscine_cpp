@@ -13,8 +13,8 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@$(CLANG) $(FLAGS) -o $@ $^
 
-%.o:%.c
-	@$(CLANG) $(FLAGS) -c $@ $<
+main.o:main.cpp
+	@$(CLANG) $(FLAGS) -c -o $@ $<
 
 clean:
 	@rm -f main.o
