@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 12:10:09 by fsidler           #+#    #+#             */
-/*   Updated: 2016/12/08 12:30:42 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/21 19:09:07 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Intern {
             public:
                 InvalidFormNameException();
                 InvalidFormNameException(InvalidFormNameException const &src);
-                ~InvalidFormNameException() throw();
+                virtual ~InvalidFormNameException() throw();
 
                 InvalidFormNameException    &operator=(InvalidFormNameException const &rhs);
 

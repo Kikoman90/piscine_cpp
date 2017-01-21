@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 15:27:14 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/18 16:53:04 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/21 19:13:10 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <iostream>
 # include <iomanip>
 # include <cmath>
-//# include <limits>
 
 class Convert {
 
@@ -29,7 +28,7 @@ class Convert {
 
 				NonDisplayableException();
 				NonDisplayableException(NonDisplayableException const &src);
-				~NonDisplayableException() throw();
+				virtual ~NonDisplayableException() throw();
 
 				NonDisplayableException &operator=(NonDisplayableException const &rhs);
 
@@ -43,7 +42,7 @@ class Convert {
 
                 ImpossibleException();
 				ImpossibleException(ImpossibleException const &src);
-				~ImpossibleException() throw();
+				virtual ~ImpossibleException() throw();
 
 				ImpossibleException     &operator=(ImpossibleException const &rhs);
 

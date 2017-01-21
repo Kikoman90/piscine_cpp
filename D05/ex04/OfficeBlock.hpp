@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 13:00:36 by fsidler           #+#    #+#             */
-/*   Updated: 2016/12/08 15:39:33 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/21 19:09:26 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class OfficeBlock {
             public:
                 NoInternException();
                 NoInternException(NoInternException const &src);
-                ~NoInternException() throw();
+                virtual ~NoInternException() throw();
 
                 NoInternException   &operator=(NoInternException const &rhs);
 
@@ -46,7 +46,7 @@ class OfficeBlock {
             public:
                 NoSignerException();
                 NoSignerException(NoSignerException const &src);
-                ~NoSignerException() throw();
+                virtual ~NoSignerException() throw();
 
                 NoSignerException   &operator=(NoSignerException const &rhs);
 
@@ -58,7 +58,7 @@ class OfficeBlock {
             public:
                 NoExecutorException();
                 NoExecutorException(NoExecutorException const &src);
-                ~NoExecutorException() throw();
+                virtual ~NoExecutorException() throw();
 
                 NoExecutorException   &operator=(NoExecutorException const &rhs);
 
@@ -70,7 +70,7 @@ class OfficeBlock {
             public:
                 BureaucracyFailedException();
                 BureaucracyFailedException(BureaucracyFailedException const &src);
-                ~BureaucracyFailedException() throw();
+                virtual ~BureaucracyFailedException() throw();
 
                 BureaucracyFailedException   &operator=(BureaucracyFailedException const &rhs);
 

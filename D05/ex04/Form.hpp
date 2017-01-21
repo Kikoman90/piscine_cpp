@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 15:26:23 by fsidler           #+#    #+#             */
-/*   Updated: 2016/12/07 18:38:08 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/21 19:09:02 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class Form {
             public:
                 GradeTooHighException();
                 GradeTooHighException(GradeTooHighException const &src);
-                ~GradeTooHighException() throw();
+                virtual ~GradeTooHighException() throw();
 
                 GradeTooHighException   &operator=(GradeTooHighException const &rhs);
 
@@ -47,7 +47,7 @@ class Form {
             public:
                 GradeTooLowException();
                 GradeTooLowException(GradeTooLowException const &src);
-                ~GradeTooLowException() throw();
+                virtual ~GradeTooLowException() throw();
 
                 GradeTooLowException   &operator=(GradeTooLowException const &rhs);
 
@@ -60,7 +60,7 @@ class Form {
             public:
                 FormNotSignedException();
                 FormNotSignedException(FormNotSignedException const &src);
-                ~FormNotSignedException() throw();
+                virtual ~FormNotSignedException() throw();
 
                 FormNotSignedException  &operator=(FormNotSignedException const &rhs);
 

@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/03 15:41:46 by fsidler           #+#    #+#             */
-/*   Updated: 2016/12/07 19:03:35 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/21 19:09:44 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class Bureaucrat {
             public:
                 GradeTooHighException();
                 GradeTooHighException(GradeTooHighException const &src);
-                ~GradeTooHighException() throw();
+                virtual ~GradeTooHighException() throw();
 
                 GradeTooHighException   &operator=(GradeTooHighException const &rhs);
 
@@ -47,7 +47,7 @@ class Bureaucrat {
             public:
                 GradeTooLowException();
                 GradeTooLowException(GradeTooLowException const &src);
-                ~GradeTooLowException() throw();
+                virtual ~GradeTooLowException() throw();
 
                 GradeTooLowException   &operator=(GradeTooLowException const &rhs);
 
