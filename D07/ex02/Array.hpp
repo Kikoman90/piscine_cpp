@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/21 18:51:48 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/21 19:52:22 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/23 14:44:14 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,13 @@ class Array {
 			_array = new T[n];
 		}
 
-		~Array<T>() {}
+		~Array<T>() { delete[] _array; }
 
 		Array           &operator=(Array const & rhs)
 		{
             if (this != &rhs)
             {
-                delete _array;
+                delete[] _array;
                 _size = rhs._size;
                 _array = new T[_size];
                 for (unsigned int i = 0; i < _size; i++)
