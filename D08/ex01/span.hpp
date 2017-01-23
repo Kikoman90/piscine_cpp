@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 14:14:43 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/23 14:46:45 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/23 21:04:33 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <vector>
 # include <list>
 
-template< typename T = std::vector<int> >
 class   Span {
 
     public:
@@ -26,32 +25,60 @@ class   Span {
         Span(Span const &src);
         ~Span();
 
-        Span            &operator=(Span const &rhs);
+        Span                                    &operator=(Span const &rhs);
 
-        void            addNumber(int number);
-        void            addNumber(int number, const typename T::const_iterator begin, const typename T::const_iterator end);
+        void                                    addNumber(unsigned int number);
+        void                                    addNumber(unsigned int number, unsigned int int_begin, unsigned int int_end);
 
-        unsigned int    shortestSpan() const;
-        unsigned int    longestSpan() const;
-        
-        unsigned int    getSize() const;
+        void                                    print_vec() const;
+
+        //unsigned int                          shortestSpan() const;
+        //unsigned int                          longestSpan() const;
 
     private:
         Span();
 
-        unsigned int    _maxSize;
-        T               _cont;
+        unsigned int                            _maxSize;
+        std::vector<int>                        _vec;
         
-        class           NoSpanException : public std::exception {
+        std::vector<int>::iterator              get_iterator_from_int(unsigned int index);
+
+        class                                   ListIsFullException : public std::exception {
+
+            public:
+                ListIsFullException();
+                ListIsFullException(ListIsFullException const &src);
+                virtual ~ListIsFullException() throw();
+
+                ListIsFullException             &operator=(ListIsFullException const &rhs);
+
+                char const                      *what() const throw();
+
+        };
+
+        class                                   NoSpanException : public std::exception {
 
             public:
                 NoSpanException();
                 NoSpanException(NoSpanException const &src);
                 virtual ~NoSpanException() throw();
 
-                NoSpanException &operator=(NoSpanException const &rhs);
+                NoSpanException                 &operator=(NoSpanException const &rhs);
 
-                char const      *what() const throw();
+                char const                      *what() const throw();
+
+        };
+
+        class                                   InvalidIteratorIndexException : public std::exception {
+
+            public:
+                InvalidIteratorIndexException();
+                InvalidIteratorIndexException(InvalidIteratorIndexException const &src);
+                virtual ~InvalidIteratorIndexException() throw();
+
+                InvalidIteratorIndexException   &operator=(InvalidIteratorIndexException const &rhs);
+
+                char const                      *what() const throw();
 
         };
 
