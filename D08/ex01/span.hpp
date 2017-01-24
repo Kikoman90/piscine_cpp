@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 14:14:43 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/23 21:04:33 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/24 15:26:33 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,14 @@ class   Span {
 
         void                                    print_vec() const;
 
-        //unsigned int                          shortestSpan() const;
-        //unsigned int                          longestSpan() const;
+        unsigned int                            shortestSpan() const;
+        unsigned int                            longestSpan() const;
 
     private:
         Span();
 
         unsigned int                            _maxSize;
         std::vector<int>                        _vec;
-        
-        std::vector<int>::iterator              get_iterator_from_int(unsigned int index);
 
         class                                   ListIsFullException : public std::exception {
 
@@ -64,19 +62,6 @@ class   Span {
                 virtual ~NoSpanException() throw();
 
                 NoSpanException                 &operator=(NoSpanException const &rhs);
-
-                char const                      *what() const throw();
-
-        };
-
-        class                                   InvalidIteratorIndexException : public std::exception {
-
-            public:
-                InvalidIteratorIndexException();
-                InvalidIteratorIndexException(InvalidIteratorIndexException const &src);
-                virtual ~InvalidIteratorIndexException() throw();
-
-                InvalidIteratorIndexException   &operator=(InvalidIteratorIndexException const &rhs);
 
                 char const                      *what() const throw();
 
