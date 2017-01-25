@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/21 18:51:48 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/23 14:44:14 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/25 16:09:09 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ class Array {
 
 		~Array<T>() { delete[] _array; }
 
-		Array           &operator=(Array const & rhs)
+		Array<T>        &operator=(Array<T> const & rhs)
 		{
             if (this != &rhs)
             {
