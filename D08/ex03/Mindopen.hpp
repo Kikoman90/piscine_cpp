@@ -1,0 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Mindopen.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/25 21:37:18 by fsidler           #+#    #+#             */
+/*   Updated: 2017/01/26 19:04:05 by fsidler          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef MINDOPEN_HPP
+# define MINDOPEN_HPP
+
+# include "IInstruction.hpp"
+# include "AffPtr.hpp"
+# include "DecPtr.hpp"
+# include "IncPtr.hpp"
+# include "DecValue.hpp"
+# include "IncValue.hpp"
+# include "OpenLoop.hpp"
+# include "CloseLoop.hpp"
+
+class   IInstruction;
+
+class   Mindopen {
+
+    public:
+        Mindopen(char *str);
+        Mindopen(Mindopen const &src);
+        ~Mindopen();
+
+        Mindopen                    &operator=(Mindopen const &rhs);
+
+        void                        readStr();
+        void                        executeInstructions();
+
+    private:
+        Mindopen();
+
+        char                        *_str;
+        std::vector<IInstruction*>  _container;
+
+};
+
+#endif
