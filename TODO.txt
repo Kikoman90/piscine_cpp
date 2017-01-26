@@ -1,0 +1,1 @@
+change mindopen symbols (right now symbols are from brainfuck)

@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 21:37:18 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/26 19:04:05 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/26 19:39:43 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # include "IncValue.hpp"
 # include "OpenLoop.hpp"
 # include "CloseLoop.hpp"
+
+# include <fstream>
+# include <sstream>
 
 class   IInstruction;
 
@@ -39,7 +42,7 @@ class   Mindopen {
     private:
         Mindopen();
 
-        char                        *_str;
+        std::string                 _fileName;
         std::vector<IInstruction*>  _container;
 
 };
