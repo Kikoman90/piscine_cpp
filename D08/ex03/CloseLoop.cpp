@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 16:53:50 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/27 18:53:23 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/27 19:00:35 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,6 @@ std::vector<IInstruction*>::iterator    CloseLoop::execute(std::vector<IInstruct
 {
     if (**ptr != 0)
     {
-        /*std::vector<IInstruction*>::iterator  find = it;
-        for (std::vector<IInstruction*>::iterator  beg = c.begin(); beg != it && beg != c.end(); ++beg)
-        {
-            OpenLoop    *o_l = dynamic_cast<OpenLoop*>(*beg);
-            if (o_l)
-                find = beg;
-        }
-        return (find);*/
-        /*std::cout << "close loop" << std::endl;*/
         int p = 0;
         typedef std::reverse_iterator<std::vector<IInstruction*>::iterator> revIter;
         --it;
@@ -55,7 +46,23 @@ std::vector<IInstruction*>::iterator    CloseLoop::execute(std::vector<IInstruct
             }
         }
         return (c.begin());
-
+        /*int p = 0;
+        --it;
+        for ( ; it != c.begin(); --it)
+        {
+            CloseLoop   *c_l = dynamic_cast<CloseLoop*>(*it);
+            if (c_l)
+                p++;
+            else
+            {
+                OpenLoop    *o_l = dynamic_cast<OpenLoop*>(*it);
+                if (o_l && p == 0)
+                    return (it);
+                else if (o_l)
+                    p--;
+            }
+        }
+        return (c.begin());*/ /*also works*/
     }
     return (it);
 }
