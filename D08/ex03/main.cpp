@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 22:45:43 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/26 19:05:00 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/27 14:11:31 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@ int     main(int argc, char **argv)
         mind_open.readStr();
         mind_open.executeInstructions();
     }
+    else
+        std::cout << "usage: ./mindopen input_file" << std::endl;
     return (0);
 }

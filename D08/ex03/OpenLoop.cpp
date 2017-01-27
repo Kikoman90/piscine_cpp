@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 16:51:57 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/26 19:03:04 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/27 18:53:10 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,21 @@ std::vector<IInstruction*>::iterator    OpenLoop::execute(std::vector<IInstructi
 {
     if (**ptr == 0)
     {
+        int p = 0;
+        ++it;
         for (std::vector<IInstruction*>::iterator it_cpy = it; it_cpy != c.end(); ++it_cpy)
         {
-            CloseLoop   *c_l = dynamic_cast<CloseLoop*>(*it_cpy);
-            if (c_l)
-                return (it_cpy);
+            OpenLoop    *o_l = dynamic_cast<OpenLoop*>(*it_cpy);
+            if (o_l)
+                p++;
+            else
+            {
+                CloseLoop   *c_l = dynamic_cast<CloseLoop*>(*it_cpy);
+                if (c_l && p == 0)
+                    return (it_cpy);
+                else if (c_l)
+                    p--;
+            }
         }
         return (c.end());
     }
