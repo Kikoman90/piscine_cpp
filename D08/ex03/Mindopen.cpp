@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 21:42:02 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/26 19:47:41 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/27 14:00:11 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,19 @@ void            Mindopen::readStr()
     str = read.str();
     for (it = str.begin(); it != str.end(); ++it)
 	{
-        if (*it == '+')
+        if (*it == '^')
             _container.push_back(new IncValue());
-        else if (*it == '-')
+        else if (*it == 'v')
             _container.push_back(new DecValue());
-        else if (*it == '>')
+        else if (*it == '*')
             _container.push_back(new IncPtr());
-        else if (*it == '<')
+        else if (*it == '&')
             _container.push_back(new DecPtr());
-        else if (*it == '[')
+        else if (*it == '(')
             _container.push_back(new OpenLoop());
-        else if (*it == ']')
+        else if (*it == ')')
             _container.push_back(new CloseLoop());
-		else if (*it == '.')
+		else if (*it == '!')
             _container.push_back(new AffPtr());
     }
     file.close();
