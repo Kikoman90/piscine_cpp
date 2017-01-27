@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 21:42:02 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/27 18:53:43 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/27 19:45:22 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,26 @@
 
 Mindopen::Mindopen(char *str) : _fileName(str) {}
 
-Mindopen::Mindopen(Mindopen const &src)
+Mindopen::Mindopen(Mindopen const &src) : _fileName(src._fileName)
 {
-    _fileName = src._fileName;
-    _container = src._container;
+    for (std::vector<IInstruction*>::const_iterator it = src._container.begin(); it != src._container.end(); ++it)
+        _container.push_back((*it)->clone());
 }
 
-Mindopen::~Mindopen() {} //DELETE ALL INSTRUCTIONS}
+Mindopen::~Mindopen()
+{
+    for (std::vector<IInstruction*>::iterator it = _container.begin(); it != _container.end(); ++it)
+        delete (*it);
+}
 
 Mindopen        &Mindopen::operator=(Mindopen const &rhs)
 {
     if (this != &rhs)
     {
-        //DELETE ALL INSTRUCTIONS
+        for (std::vector<IInstruction*>::iterator it = _container.begin(); it != _container.end(); ++it)
+            delete (*it);
+        for (std::vector<IInstruction*>::const_iterator it = rhs._container.begin(); it != rhs._container.end(); ++it)
+            _container.push_back((*it)->clone());
         _fileName = rhs._fileName;
         _container = rhs._container;
     }

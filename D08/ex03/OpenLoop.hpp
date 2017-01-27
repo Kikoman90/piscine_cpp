@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 16:49:48 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/26 19:03:08 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/27 19:41:03 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class   OpenLoop : public IInstruction {
 
         OpenLoop                                &operator=(OpenLoop const &rhs);
 
+        IInstruction                            *clone() const;
         std::vector<IInstruction*>::iterator    execute(std::vector<IInstruction*>::iterator &it,
             std::vector<IInstruction*> &c, char **ptr) const;
 

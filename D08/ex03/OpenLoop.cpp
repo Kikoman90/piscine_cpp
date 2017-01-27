@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 16:51:57 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/27 18:53:10 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/27 19:44:26 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ OpenLoop                                &OpenLoop::operator=(OpenLoop const &rhs
     static_cast<void>(rhs);
     return (*this);
 }
+
+IInstruction                            *OpenLoop::clone() const { return ((IInstruction*)new OpenLoop(*this)); }
 
 std::vector<IInstruction*>::iterator    OpenLoop::execute(std::vector<IInstruction*>::iterator &it, std::vector<IInstruction*> &c, char **ptr) const
 {

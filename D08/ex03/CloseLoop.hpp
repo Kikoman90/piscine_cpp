@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 16:51:14 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/26 19:02:17 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/27 19:41:15 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class   CloseLoop : public IInstruction {
 
         CloseLoop                               &operator=(CloseLoop const &rhs);
 
+        IInstruction                            *clone() const;
         std::vector<IInstruction*>::iterator    execute(std::vector<IInstruction*>::iterator &it,
             std::vector<IInstruction*> &c, char **ptr) const;
 

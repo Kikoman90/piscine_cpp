@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 16:38:49 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/26 19:02:58 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/27 19:41:43 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class   IncValue : public IInstruction {
 
         IncValue                                &operator=(IncValue const &rhs);
 
+        IInstruction                            *clone() const;
         std::vector<IInstruction*>::iterator    execute(std::vector<IInstruction*>::iterator &it,
             std::vector<IInstruction*> &c, char **Value) const;
 

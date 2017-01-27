@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 16:53:50 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/27 19:00:35 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/27 19:46:18 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ CloseLoop                               &CloseLoop::operator=(CloseLoop const &r
     static_cast<void>(rhs);
     return (*this);
 }
+
+IInstruction                            *CloseLoop::clone() const { return ((IInstruction*)new CloseLoop(*this)); }
 
 std::vector<IInstruction*>::iterator    CloseLoop::execute(std::vector<IInstruction*>::iterator &it, std::vector<IInstruction*> &c, char **ptr) const
 {
@@ -46,7 +48,7 @@ std::vector<IInstruction*>::iterator    CloseLoop::execute(std::vector<IInstruct
             }
         }
         return (c.begin());
-        /*int p = 0;
+        /*also works*. /*int p = 0;
         --it;
         for ( ; it != c.begin(); --it)
         {

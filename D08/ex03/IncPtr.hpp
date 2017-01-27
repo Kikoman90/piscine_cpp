@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 16:37:46 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/26 19:02:47 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/27 19:41:39 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class   IncPtr : public IInstruction {
 
         IncPtr                                  &operator=(IncPtr const &rhs);
 
+        IInstruction                            *clone() const;
         std::vector<IInstruction*>::iterator    execute(std::vector<IInstruction*>::iterator &it,
             std::vector<IInstruction*> &c, char **ptr) const;
 
