@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 21:42:02 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/27 19:45:22 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/30 18:26:44 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ Mindopen        &Mindopen::operator=(Mindopen const &rhs)
         for (std::vector<IInstruction*>::const_iterator it = rhs._container.begin(); it != rhs._container.end(); ++it)
             _container.push_back((*it)->clone());
         _fileName = rhs._fileName;
-        _container = rhs._container;
     }
     return (*this);
 }

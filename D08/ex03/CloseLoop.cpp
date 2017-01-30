@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 16:53:50 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/27 19:46:18 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/30 20:31:03 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ std::vector<IInstruction*>::iterator    CloseLoop::execute(std::vector<IInstruct
             }
         }
         return (c.begin());
-        /*also works*. /*int p = 0;
+        /*also works*/ /*int p = 0;
         --it;
         for ( ; it != c.begin(); --it)
         {

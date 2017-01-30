@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IInstruction.hpp                                   :+:      :+:    :+:   */
+/*   IToken.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/25 21:24:50 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/30 20:10:45 by fsidler          ###   ########.fr       */
+/*   Created: 2017/01/30 19:42:19 by fsidler           #+#    #+#             */
+/*   Updated: 2017/01/30 20:30:20 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef I_INSTRUCTION_HPP
-# define I_INSTRUCTION_HPP
+#ifndef I_TOKEN_HPP
+# define I_TOKEN_HPP
 
 # include <iostream>
-# include <fstream>
 # include <sstream>
 # include <string>
 # include <algorithm>
+# include <stack>
 # include <list>
 # include <vector>
 
-class   IInstruction {
+class   IToken {
 
     public:
-        virtual                                         ~IInstruction() {}
-        
-        virtual IInstruction                            *clone() const = 0;
-        virtual std::vector<IInstruction*>::iterator    execute(std::vector<IInstruction*>::iterator &it,
-            std::vector<IInstruction*> &c, char **ptr) const = 0;
+        virtual     ~IToken() {}
+
+        virtual IToken  *clone() const = 0;
+
+        virtual void    display() const = 0;
+        //void    completeDisplay() const;                                                                    } put in derived classes Num and Op
+
+        //std::stack<int> execute(std::stack<int> &st); si ca marche pas: std::stack< int, std::vector<int> > } put in derived classes Num and Op
 
 };
 
