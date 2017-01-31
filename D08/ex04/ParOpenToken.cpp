@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   OpToken.cpp                                        :+:      :+:    :+:   */
+/*   ParOpenToken.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/31 18:50:28 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/31 18:51:36 by fsidler          ###   ########.fr       */
+/*   Created: 2017/01/31 18:58:03 by fsidler           #+#    #+#             */
+/*   Updated: 2017/01/31 18:58:24 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "OpToken.hpp"
+#include "ParOpenToken.hpp"
 
-OpToken::OpToken(char op) : _op(op) {}
+ParOpenToken::ParOpenToken() {}
 
-OpToken::OpToken(OpToken const &src) : _op(src._op) {}
+ParOpenToken::ParOpenToken(ParOpenToken const &src) { *this = src; }
 
-OpToken::~OpToken() {}
+ParOpenToken::~ParOpenToken() {}
 
-OpToken         &OpToken::operator=(OpToken const &rhs)
+ParOpenToken    &ParOpenToken::operator=(ParOpenToken const &rhs)
 {
-    if (this != &rhs)
-        _op = rhs._op;
+    static_cast<void>(rhs);
     return (*this);
 }
 
-IToken          *OpToken::clone() const
+IToken          *ParOpenToken::clone() const
 {
     IToken  *clone;
 
-    clone = new OpToken(*this);
+    clone = new ParOpenToken(*this);
     return (clone);
 }
 
-void            OpToken::display() const { std::cout << " Op(" << _op << ")"; }
+void            ParOpenToken::display() const { std::cout << " ParOpen"; }

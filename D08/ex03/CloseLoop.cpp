@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 16:53:50 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/30 20:31:03 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/31 18:42:40 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,13 @@ CloseLoop                               &CloseLoop::operator=(CloseLoop const &r
     return (*this);
 }
 
-IInstruction                            *CloseLoop::clone() const { return ((IInstruction*)new CloseLoop(*this)); }
+IInstruction                            *CloseLoop::clone() const
+{
+    IInstruction    *clone;
+
+    clone = new CloseLoop(*this);
+    return (clone);
+}
 
 std::vector<IInstruction*>::iterator    CloseLoop::execute(std::vector<IInstruction*>::iterator &it, std::vector<IInstruction*> &c, char **ptr) const
 {

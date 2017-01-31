@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   OpToken.cpp                                        :+:      :+:    :+:   */
+/*   ParCloseToken.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/31 18:50:28 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/31 18:51:36 by fsidler          ###   ########.fr       */
+/*   Created: 2017/01/31 18:54:41 by fsidler           #+#    #+#             */
+/*   Updated: 2017/01/31 18:56:58 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "OpToken.hpp"
+#include "ParCloseToken.hpp"
 
-OpToken::OpToken(char op) : _op(op) {}
+ParCloseToken::ParCloseToken() {}
 
-OpToken::OpToken(OpToken const &src) : _op(src._op) {}
+ParCloseToken::ParCloseToken(ParCloseToken const &src) { *this = src; }
 
-OpToken::~OpToken() {}
+ParCloseToken::~ParCloseToken() {}
 
-OpToken         &OpToken::operator=(OpToken const &rhs)
+ParCloseToken   &ParCloseToken::operator=(ParCloseToken const &rhs)
 {
-    if (this != &rhs)
-        _op = rhs._op;
+    static_cast<void>(rhs);
     return (*this);
 }
 
-IToken          *OpToken::clone() const
+IToken          *ParCloseToken::clone() const
 {
     IToken  *clone;
 
-    clone = new OpToken(*this);
+    clone = new ParCloseToken(*this);
     return (clone);
 }
 
-void            OpToken::display() const { std::cout << " Op(" << _op << ")"; }
+void            ParCloseToken::display() const { std::cout << " ParClose"; }

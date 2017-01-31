@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 18:10:25 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/30 19:48:53 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/31 20:06:10 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,14 @@ class   Calculator {
 
         Calculator();
 
+        int                     _my_atoi(const char *str, unsigned int *k);
+
         void                    _print_list(std::vector<IToken*> const &) const;
         //void                    _convertToPostfix();
 
         char                    *_input;
         std::vector<IToken*>    _operationList;
-        //std::vector<IToken*>    _postfixList;
+        std::vector<IToken*>    _postfixList;
 
 };
 

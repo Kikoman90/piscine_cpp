@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 18:20:08 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/30 20:22:31 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/31 20:52:48 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ Calculator::Calculator(Calculator const &src) : _input(src._input)
 
 Calculator::~Calculator()
 {
-    for (std::vector<IToken*>::const_iterator it = src._operationList.begin(); it != src._operationList.end(); ++it)    
-        delete (*it):
-    for (std::vector<IToken*>::const_iterator it = src._postfixList.begin(); it != src._postfixList.end(); ++it)
+    for (std::vector<IToken*>::const_iterator it = _operationList.begin(); it != _operationList.end(); ++it)    
+        delete (*it);
+    for (std::vector<IToken*>::const_iterator it = _postfixList.begin(); it != _postfixList.end(); ++it)
         delete (*it);
 }
 
@@ -35,13 +35,13 @@ Calculator          &Calculator::operator=(Calculator const &rhs)
     if (this != &rhs)
     {
         _input = rhs._input;
-        for (std::vector<IToken*>::const_iterator it = src._operationList.begin(); it != src._operationList.end(); ++it)    
-            delete (*it):
-        for (std::vector<IToken*>::const_iterator it = src._postfixList.begin(); it != src._postfixList.end(); ++it)
+        for (std::vector<IToken*>::const_iterator it = _operationList.begin(); it != _operationList.end(); ++it)    
             delete (*it);
-        for (std::vector<IToken*>::const_iterator it = src._operationList.begin(); it != src._operationList.end(); ++it)
+        for (std::vector<IToken*>::const_iterator it = _postfixList.begin(); it != _postfixList.end(); ++it)
+            delete (*it);
+        for (std::vector<IToken*>::const_iterator it = rhs._operationList.begin(); it != rhs._operationList.end(); ++it)
             _operationList.push_back((*it)->clone());
-        for (std::vector<IToken*>::const_iterator it = src._postfixList.begin(); it != src._postfixList.end(); ++it)
+        for (std::vector<IToken*>::const_iterator it = rhs._postfixList.begin(); it != rhs._postfixList.end(); ++it)
             _postfixList.push_back((*it)->clone());
     }
     return (*this);
@@ -50,60 +50,109 @@ Calculator          &Calculator::operator=(Calculator const &rhs)
 void                Calculator::_print_list(std::vector<IToken*> const &vec) const
 {
     for (std::vector<IToken*>::const_iterator it = vec.begin(); it != vec.end(); ++it)
-        std::cout << (*it)->displayToken() << " ";
+        (*it)->display();
     std::cout << std::endl;
+}
+
+int		            Calculator::_my_atoi(const char *str, unsigned int *k)
+{
+	int		        s;
+	int		        r;
+    unsigned int    l = 0;
+    bool            sign = false;
+
+	r = 0;
+	s = 1;
+    while (str[*k] && str[*k] >= 0 && str[*k] <= 32)
+		(*k)++;
+	if (str[*k] == '-')
+		s = -1;
+	if (str[*k] == '+' || str[*k] == '-')
+    {
+        sign = true;
+		(*k)++;
+    }
+	while (str[*k] && str[*k] >= '0' && str[*k] <= '9')
+	{
+		r = r * 10 + str[*k] - '0';
+        l++;
+		(*k)++;
+	}
+    if (sign == true || l != 0)
+        (*k)--;
+	return (s * r);
 }
 
 void                Calculator::tokenize()
 {
-    unsigned int        i;
-    unsigned int        par_match = 0;
-    std::stringstream   sstream;
+    int                 num;
+    int                 par_match = 0;
+    unsigned int        i = 0;
     bool                LastPushIsNum = false;
     bool                LastPushIsOp = false;
-
-    while (_input[i])
+    bool                LastPushIsParOpen = false;
+    bool                LastPushIsParClose = false;
+    
+    while (i < strlen(_input))
     {
-        while (_input[i] && (_input[i] == ' ' || _input[i] == ' '))
-            i++;
         if (_input[i] && (_input[i] < '0' || _input[i] > '9') && _input[i] != '+'
-            && _input[i] != '-' && _input[i] != '/' && _input[i] != '*' && _input[i] != '(' && _input[i] != ')')
+            && _input[i] != '-' && _input[i] != '/' && _input[i] != '*' && _input[i] != '(' && _input[i] != ')' && _input[i] != ' ' && _input[i] != 9)
             throw (Calculator::InvalidTokenException::InvalidTokenException());
-        if (_input[i] >= '0' && _input[i] <= '9')
+        i++;
+    }
+    i = 0;
+    while (i < strlen(_input))
+    {
+        num = 0;     
+        if (_input[i] == '0' || (num = _my_atoi(_input, &i)) != 0)
         {
-            if (LastPushIsNum == true)
+            if (LastPushIsNum == true || LastPushIsParClose == true)
                 throw (Calculator::InvalidOperationException::InvalidOperationException());
-            while (_input[i] >= '0' && _input[i] <= '9')
-                sstream << _input[i++];
-            _operationList.push_back(new NumToken(atoi(sstream.str().c_str())));
-            LastPushIsOp = false;
+            _operationList.push_back(new NumToken(num));
             LastPushIsNum = true;
+            LastPushIsOp = false;
+            LastPushIsParOpen = false;
+            LastPushIsParClose = false;
         }
         else if (_input[i] == '+' || _input[i] == '-' || _input[i] == '/' || _input[i] == '*')
         {
-            if (LastPushIsOp == true)
+            if (LastPushIsNum == false && LastPushIsParClose == false)
+                throw (Calculator::InvalidOperationException::InvalidOperationException());
+            if (LastPushIsOp == true || LastPushIsParOpen == true)               
                 throw (Calculator::InvalidOperationException::InvalidOperationException());
             _operationList.push_back(new OpToken(_input[i]));
-            LastPushIsOp = true;
             LastPushIsNum = false;
+            LastPushIsOp = true;
+            LastPushIsParOpen = false;
+            LastPushIsParClose = false;
         }
         else if (_input[i] == '(')
-        {
+        {           
+            if (LastPushIsNum == true || LastPushIsParClose == true)
+                throw (Calculator::InvalidOperationException::InvalidOperationException());
             par_match++;
             _operationList.push_back(new ParOpenToken());
+            LastPushIsNum = false;
+            LastPushIsOp = false;
+            LastPushIsParOpen = true;
+            LastPushIsParClose = false;
         }
         else if (_input[i] == ')')
         {
-            if (par_match == 0)
+            if (par_match == 0 || LastPushIsOp == true || LastPushIsParOpen == true)
                 throw (Calculator::InvalidOperationException::InvalidOperationException());
             par_match--;
-            _operationList.push_back(new ParCloseToken());            
+            _operationList.push_back(new ParCloseToken());
+            LastPushIsNum = false;
+            LastPushIsOp = false;
+            LastPushIsParOpen = false;
+            LastPushIsParClose = true;
         }
         i++;
     }
-    if (par_match != 0)
+    if (par_match != 0 || LastPushIsOp == true)
         throw (Calculator::InvalidOperationException::InvalidOperationException());
-    std::cout << "Tokens: ";
+    std::cout << "Tokens:";
     _print_list(_operationList);
 }
 

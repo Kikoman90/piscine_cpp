@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   OpToken.hpp                                        :+:      :+:    :+:   */
+/*   ParCloseToken.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/31 18:49:22 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/31 18:50:06 by fsidler          ###   ########.fr       */
+/*   Created: 2017/01/31 18:53:49 by fsidler           #+#    #+#             */
+/*   Updated: 2017/01/31 19:02:36 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OP_TOKEN_HPP
-# define OP_TOKEN_HPP
+#ifndef PAR_CLOSE_TOKEN_HPP
+# define PAR_CLOSE_TOKEN_HPP
 
 # include "IToken.hpp"
 
-class   OpToken : public IToken {
+class   ParCloseToken : public IToken {
 
     public:
-        OpToken(char op);
-        OpToken(OpToken const &src);
-        ~OpToken();
+        ParCloseToken();
+        ParCloseToken(ParCloseToken const &src);
+        ~ParCloseToken();
 
-        OpToken     &operator=(OpToken const &rhs);
+        ParCloseToken   &operator=(ParCloseToken const &rhs);
 
-        IToken      *clone() const;
+        IToken          *clone() const;
 
-        void        display() const;
-
-    private:
-        char        _op;
+        void            display() const;
 
 };
 

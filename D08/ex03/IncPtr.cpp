@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 16:48:35 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/27 19:43:57 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/31 18:42:51 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,13 @@ IncPtr                                  &IncPtr::operator=(IncPtr const &rhs)
     return (*this);
 }
 
-IInstruction                            *IncPtr::clone() const { return ((IInstruction*)new IncPtr(*this)); }
+IInstruction                            *IncPtr::clone() const
+{
+    IInstruction    *clone;
+
+    clone = new IncPtr(*this);
+    return (clone);
+}
 
 std::vector<IInstruction*>::iterator    IncPtr::execute(std::vector<IInstruction*>::iterator &it, std::vector<IInstruction*> &c, char **ptr) const
 {

@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 16:47:45 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/27 19:43:44 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/01/31 18:42:47 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,13 @@ DecValue                                &DecValue::operator=(DecValue const &rhs
     return (*this);
 }
 
-IInstruction                            *DecValue::clone() const { return ((IInstruction*)new DecValue(*this)); }
+IInstruction                            *DecValue::clone() const
+{
+    IInstruction    *clone;
+
+    clone = new DecValue(*this);
+    return (clone);
+}
 
 std::vector<IInstruction*>::iterator    DecValue::execute(std::vector<IInstruction*>::iterator &it, std::vector<IInstruction*> &c, char **ptr) const
 {
