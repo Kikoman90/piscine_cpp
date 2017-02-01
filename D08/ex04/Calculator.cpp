@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 18:20:08 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/31 20:52:48 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/02/02 00:47:05 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Calculator::~Calculator()
         delete (*it);
 }
 
-Calculator          &Calculator::operator=(Calculator const &rhs)
+Calculator                          &Calculator::operator=(Calculator const &rhs)
 {
     if (this != &rhs)
     {
@@ -47,14 +47,14 @@ Calculator          &Calculator::operator=(Calculator const &rhs)
     return (*this);
 }
 
-void                Calculator::_print_list(std::vector<IToken*> const &vec) const
+void                                Calculator::_print_list(std::vector<IToken*> const &vec) const
 {
     for (std::vector<IToken*>::const_iterator it = vec.begin(); it != vec.end(); ++it)
         (*it)->display();
     std::cout << std::endl;
 }
 
-int		            Calculator::_my_atoi(const char *str, unsigned int *k)
+int		                            Calculator::_my_atoi(const char *str, unsigned int *k)
 {
 	int		        s;
 	int		        r;
@@ -83,7 +83,7 @@ int		            Calculator::_my_atoi(const char *str, unsigned int *k)
 	return (s * r);
 }
 
-void                Calculator::tokenize()
+void                                Calculator::tokenize()
 {
     int                 num;
     int                 par_match = 0;
@@ -156,15 +156,81 @@ void                Calculator::tokenize()
     _print_list(_operationList);
 }
 
-/*void                Calculator::_convertToPostfix()
+bool                                Calculator::_opPriority(OpToken const *op1, OpToken const *op2) const
 {
-    
+    char    ch_op1 = op1->getOp();
+    char    ch_op2 = op2->getOp();
+
+    if ((ch_op1 == '+' || ch_op1 == '-') && (ch_op2 == '*' || ch_op2 == '/'))
+        return (false);
+    return (true);
 }
 
-void                Calculator::result()
+std::vector<IToken*>::iterator      Calculator::_convertToPostfix(std::vector<IToken*>::iterator &begin)
 {
+    std::vector<IToken*>::iterator  it;
+    OpToken                         *cur_op = NULL;
+    OpToken                         *last_op = NULL;
+
+    for (it = begin ; it != _operationList.end(); ++it)
+    {
+        NumToken    *num_token = dynamic_cast<NumToken*>(*it);
+        if (num_token)
+            _postfixList.push_back((*it)->clone());
+        OpToken     *op_token = dynamic_cast<OpToken*>(*it);
+        if (op_token)
+        {
+            if (!cur_op)
+                cur_op = op_token;
+            else if (_opPriority(cur_op, op_token) == true)
+            {
+                _postfixList.push_back(cur_op->clone());
+                cur_op = op_token;
+            }
+            else if (_opPriority(cur_op, op_token) == false)
+            {
+                last_op = cur_op;
+                cur_op = op_token;
+            }
+            if (last_op && _opPriority(last_op, cur_op) == true)
+            {
+                _postfixList.push_back(last_op->clone());
+                last_op = NULL;
+            }
+        }
+        ParOpenToken    *par_open_token = dynamic_cast<ParOpenToken*>(*it);
+        if (par_open_token)
+            it = _convertToPostfix(++it);
+        else
+        {
+            ParCloseToken   *par_close_token = dynamic_cast<ParCloseToken*>(*it);
+            if (par_close_token)
+                break;
+        }
+    }
+    if (cur_op)
+        _postfixList.push_back(cur_op->clone());
+    if (last_op)
+        _postfixList.push_back(last_op->clone());
+    return (it);
+}
+
+void                                Calculator::result()
+{
+    std::vector<IToken*>::iterator  begin = _operationList.begin();
+    _convertToPostfix(begin);
+    std::cout << "Postfix:";
+    _print_list(_postfixList);
+
+    std::stack<int>     operation_stack;
     
-}*/
+    for (std::vector<IToken*>::const_iterator it = _postfixList.begin(); it != _postfixList.end(); ++it)
+    {
+        
+    }
+    //stack d'int;
+    //push = push_front! YAY!
+}
 
 Calculator::InvalidTokenException::InvalidTokenException() {}
 

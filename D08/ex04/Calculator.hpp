@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 18:10:25 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/31 20:06:10 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/02/02 00:43:20 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ class   Calculator {
         Calculator(Calculator const &src);
         ~Calculator();
 
-        Calculator              &operator=(Calculator const &rhs);
+        Calculator                      &operator=(Calculator const &rhs);
 
-        void                    tokenize();
-        //void                    result();
+        void                            tokenize();
+        void                            result();
 
     private:
         class   InvalidTokenException : public std::exception {
@@ -60,14 +60,17 @@ class   Calculator {
 
         Calculator();
 
-        int                     _my_atoi(const char *str, unsigned int *k);
+        int                             _my_atoi(const char *str, unsigned int *k);
 
-        void                    _print_list(std::vector<IToken*> const &) const;
-        //void                    _convertToPostfix();
+        void                            _print_list(std::vector<IToken*> const &) const;
 
-        char                    *_input;
-        std::vector<IToken*>    _operationList;
-        std::vector<IToken*>    _postfixList;
+        bool                            _opPriority(OpToken const *op1, OpToken const *op2) const;
+        
+        std::vector<IToken*>::iterator  _convertToPostfix(std::vector<IToken*>::iterator &begin);
+
+        char                            *_input;
+        std::vector<IToken*>            _operationList;
+        std::vector<IToken*>            _postfixList;
 
 };
 

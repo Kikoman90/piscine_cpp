@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 18:49:22 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/31 18:50:06 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/02/01 23:35:05 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class   OpToken : public IToken {
         OpToken     &operator=(OpToken const &rhs);
 
         IToken      *clone() const;
+
+        char        getOp() const;
 
         void        display() const;
 

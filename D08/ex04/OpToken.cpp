@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 18:50:28 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/31 18:51:36 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/02/01 23:35:25 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ IToken          *OpToken::clone() const
     clone = new OpToken(*this);
     return (clone);
 }
+
+char            OpToken::getOp() const { return (_op); }
 
 void            OpToken::display() const { std::cout << " Op(" << _op << ")"; }
