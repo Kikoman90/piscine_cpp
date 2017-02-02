@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 18:50:28 by fsidler           #+#    #+#             */
-/*   Updated: 2017/02/01 23:35:25 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/02/02 01:46:54 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,37 @@ IToken          *OpToken::clone() const
 
 char            OpToken::getOp() const { return (_op); }
 
-void            OpToken::display() const { std::cout << " Op(" << _op << ")"; }
+std::string     OpToken::display() const
+{
+    std::stringstream   sstream;
+
+    sstream << " Op(" << _op << ')';
+    return (sstream.str());
+}
+
+void            OpToken::completeDisplay(unsigned int length) const
+{
+    if (_op == '+')
+        std::cout << '[' << std::left << std::setw(length) << display() << "| OP Add       | ST";
+    else if (_op == '-')
+        std::cout << '[' << std::left << std::setw(length) << display() << "| OP Substract | ST";
+    else if (_op == '*')
+        std::cout << '[' << std::left << std::setw(length) << display() << "| OP Multiply  | ST";
+    else if (_op == '/')
+        std::cout << '[' << std::left << std::setw(length) << display() << "| OP Divide    | ST";
+}
+
+int             OpToken::operation(int n1, int n2) const
+{
+    int result = 0;
+
+    if (_op == '+')
+        result = n1 + n2;
+    else if (_op == '-')
+        result = n1 - n2;
+    else if (_op == '*')
+        result = n1 * n2;
+    else if (_op == '/')
+        result = n1 / n2;
+    return (result);
+}

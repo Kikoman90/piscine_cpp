@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 18:58:03 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/31 18:58:24 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/02/02 01:42:38 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,4 @@ IToken          *ParOpenToken::clone() const
     return (clone);
 }
 
-void            ParOpenToken::display() const { std::cout << " ParOpen"; }
+std::string     ParOpenToken::display() const { return (" ParOpen"); }

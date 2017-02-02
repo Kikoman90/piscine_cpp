@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 18:54:41 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/31 18:56:58 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/02/02 01:42:22 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,4 @@ IToken          *ParCloseToken::clone() const
     return (clone);
 }
 
-void            ParCloseToken::display() const { std::cout << " ParClose"; }
+std::string     ParCloseToken::display() const { return (" ParClose"); }

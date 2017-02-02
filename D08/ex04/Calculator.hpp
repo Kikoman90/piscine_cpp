@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 18:10:25 by fsidler           #+#    #+#             */
-/*   Updated: 2017/02/02 00:43:20 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/02/02 01:54:17 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include "OpToken.hpp"
 # include "ParOpenToken.hpp"
 # include "ParCloseToken.hpp"
+
+# include "mutantstack.hpp"
 
 class   Calculator {
 
@@ -61,6 +63,8 @@ class   Calculator {
         Calculator();
 
         int                             _my_atoi(const char *str, unsigned int *k);
+
+        unsigned int                    _getMaxNumWidth() const;
 
         void                            _print_list(std::vector<IToken*> const &) const;
 

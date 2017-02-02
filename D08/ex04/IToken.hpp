@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 19:42:19 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/30 20:30:20 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/02/02 01:43:00 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define I_TOKEN_HPP
 
 # include <iostream>
+# include <iomanip>
 # include <sstream>
 # include <string>
 # include <algorithm>
@@ -24,14 +25,11 @@
 class   IToken {
 
     public:
-        virtual     ~IToken() {}
+        virtual             ~IToken() {}
 
-        virtual IToken  *clone() const = 0;
+        virtual IToken      *clone() const = 0;
 
-        virtual void    display() const = 0;
-        //void    completeDisplay() const;                                                                    } put in derived classes Num and Op
-
-        //std::stack<int> execute(std::stack<int> &st); si ca marche pas: std::stack< int, std::vector<int> > } put in derived classes Num and Op
+        virtual std::string display() const = 0;
 
 };
 

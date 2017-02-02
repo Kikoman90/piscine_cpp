@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 18:53:49 by fsidler           #+#    #+#             */
-/*   Updated: 2017/01/31 19:02:36 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/02/02 01:41:51 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class   ParCloseToken : public IToken {
 
         IToken          *clone() const;
 
-        void            display() const;
+        std::string     display() const;
 
 };
 

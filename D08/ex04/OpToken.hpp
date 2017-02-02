@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 18:49:22 by fsidler           #+#    #+#             */
-/*   Updated: 2017/02/01 23:35:05 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/02/02 01:40:27 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ class   OpToken : public IToken {
 
         char        getOp() const;
 
-        void        display() const;
+        std::string display() const;
+        void        completeDisplay(unsigned int length) const;
+
+        int         operation(int n1, int n2) const;
 
     private:
         char        _op;

@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 18:20:08 by fsidler           #+#    #+#             */
-/*   Updated: 2017/02/02 00:47:05 by fsidler          ###   ########.fr       */
+/*   Updated: 2017/02/02 01:58:44 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ Calculator                          &Calculator::operator=(Calculator const &rhs
 void                                Calculator::_print_list(std::vector<IToken*> const &vec) const
 {
     for (std::vector<IToken*>::const_iterator it = vec.begin(); it != vec.end(); ++it)
-        (*it)->display();
+        std::cout << (*it)->display();
     std::cout << std::endl;
 }
 
@@ -81,6 +81,24 @@ int		                            Calculator::_my_atoi(const char *str, unsigned 
     if (sign == true || l != 0)
         (*k)--;
 	return (s * r);
+}
+
+unsigned int                        Calculator::_getMaxNumWidth() const
+{
+    unsigned int        length = 0;
+    std::stringstream   sstream;
+
+    for (std::vector<IToken*>::const_iterator it = _postfixList.begin(); it != _postfixList.end(); ++it)
+    {
+        sstream.str("");
+        NumToken    *num_token = dynamic_cast<NumToken*>(*it);
+        if (num_token)
+        {
+            sstream << num_token->getNum();
+            length = (sstream.str().length() > length) ? sstream.str().length() : length;
+        }
+    }
+    return (length + 7);
 }
 
 void                                Calculator::tokenize()
@@ -222,14 +240,34 @@ void                                Calculator::result()
     std::cout << "Postfix:";
     _print_list(_postfixList);
 
-    std::stack<int>     operation_stack;
-    
+    int                 num;
+    unsigned int        length = _getMaxNumWidth();
+    MutantStack<int>    operation_stack;
     for (std::vector<IToken*>::const_iterator it = _postfixList.begin(); it != _postfixList.end(); ++it)
     {
-        
+        NumToken    *num_token = dynamic_cast<NumToken*>(*it);
+        if (num_token)
+        {
+            num_token->completeDisplay(length);
+            num = num_token->getNum();
+            operation_stack.push(num);
+        }
+        OpToken     *op_token = dynamic_cast<OpToken*>(*it);
+        if (op_token)
+        {
+            op_token->completeDisplay(length);
+            num = operation_stack.top();
+            operation_stack.pop();
+            num = op_token->operation(operation_stack.top(), num);
+            operation_stack.pop();
+            operation_stack.push(num);
+        }
+        for (MutantStack<int>::const_iterator it2 = operation_stack.begin(); it2 != operation_stack.end(); ++it2)
+            std::cout << " " << *it2;
+        std::cout << ']' << std::endl;
     }
-    //stack d'int;
-    //push = push_front! YAY!
+    std::cout << "Result: " << operation_stack.top() << std::endl;
+    operation_stack.pop();
 }
 
 Calculator::InvalidTokenException::InvalidTokenException() {}
