@@ -14,15 +14,16 @@
 
 Brain::Brain(void)
 {
+	std::ostringstream address_stream;
+
+	std::srand(std::time(NULL));
+	this->_iq = rand() % 151;
+	address_stream << this;
+	this->_address = address_stream.str();
 	return ;
 }
 
-std::string	Brain::identify(void) const
-{
-	std::ostringstream	address;
-	address << this;
-	return (address.str());
-}
+std::string	Brain::identify(void) const { return (this->_address); }
 
 Brain::~Brain(void)
 {

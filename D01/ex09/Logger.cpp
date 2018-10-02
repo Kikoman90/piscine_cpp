@@ -28,8 +28,10 @@ std::string			Logger::makeLogEntry(std::string const & message)
 	struct tm			*local_t = localtime(&cur_time);
 	std::ostringstream	sdest;
   	
-	sdest << "[" << (local_t->tm_year + 1900) << '-' << (local_t->tm_mon + 1)
-		<< '-' <<  local_t->tm_mday << "] " << message;
+	sdest << '['  << std::setw(2) << std::setfill('0') << local_t->tm_mday << '/' << std::setw(2) << std::setfill ('0')
+	<<  (local_t->tm_mon + 1) << '/' << (local_t->tm_year + 1900) << " - "
+	<< std::setw(2) << std::setfill ('0') << local_t->tm_hour << ':' << std::setw(2) << std::setfill('0')
+	<< local_t->tm_min << ':' << std::setw(2) << std::setfill('0') << local_t->tm_sec << "] " << message;
 	return (sdest.str());
 }
 

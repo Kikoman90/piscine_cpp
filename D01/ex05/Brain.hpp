@@ -23,9 +23,12 @@ class	Brain
 		Brain(void);
 		~Brain(void);
 
-		std::string	identify(void) const;	
+		std::string		identify(void) const;	
 
 	private:
+
+		unsigned int 	_iq;
+		std::string		_address;
 
 };
 

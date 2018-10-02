@@ -17,14 +17,14 @@ Human::Human(void)
 	return ;
 }
 
-Brain		&Human::getBrain(void) const
+Brain		Human::getBrain(void) const
 {
-	return ((Brain &) this->humanBrain);
+	return (this->_humanBrain);
 }
 
 std::string	Human::identify(void) const
 {
-	return (Human::getBrain().identify());
+	return (this->_humanBrain.identify());
 }
 
 Human::~Human(void)

@@ -17,8 +17,9 @@ ZombieHorde::ZombieHorde(int N) : _nb(N)
 	int	i;
 	int	r;
 
-	i = 0;
 	std::cout << "Zombie Horde appears" << std::endl;
+	i = 0;
+	std::srand(std::time(NULL));
 	_horde = new Zombie[N];
 	while (i < N)
 	{

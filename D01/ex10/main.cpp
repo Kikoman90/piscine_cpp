@@ -6,22 +6,24 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 18:01:31 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/09 22:04:55 by fsidler          ###   ########.fr       */
+/*   Updated: 2018/10/02 17:40:09 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//#include <string>
 #include <iostream>
 #include <sstream>
 #include <fstream>
 
 void	catFromInput(void)
-{
+{	
 	std::string	line;
 
-	while (true)
+	while (std::cin)
 	{
 		std::getline(std::cin, line);
-		std::cout << line << std::endl;
+		if (!std::cin.eof())
+			std::cout << line << std::endl;
 	}
 }
 

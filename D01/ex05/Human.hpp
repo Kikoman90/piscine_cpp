@@ -22,12 +22,12 @@ class	Human
 		Human(void);
 		~Human(void);
 
-		const Brain		humanBrain;
-
-		Brain			&getBrain(void) const;
+		Brain			getBrain(void) const;
 		std::string		identify(void) const;	
 
 	private:
+
+		const Brain		_humanBrain;
 
 };
 
