@@ -4,10 +4,8 @@ CLANG = clang++
 
 FLAG = -Wall -Wextra -Werror
 
-SRC = utils.cpp \
-	  Contact.cpp \
-	  command.cpp \
-	  phonebook.cpp \
+SRC = Contact.cpp \
+	  main.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
