@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 05:22:18 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/30 20:37:09 by fsidler          ###   ########.fr       */
+/*   Updated: 2018/10/05 13:06:17 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class Character {
         void                equip(AWeapon*);
         void                attack(Enemy*);
 
-        std::string const   getName(void) const;
+        std::string const   &getName(void) const;
         int                 getAP(void) const;
         AWeapon             *getWeapon(void) const;
 };

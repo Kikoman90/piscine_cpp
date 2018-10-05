@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 05:22:23 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/24 05:22:24 by fsidler          ###   ########.fr       */
+/*   Updated: 2018/10/05 13:04:17 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void                Enemy::takeDamage(int dmg)
         this->_hp = 0;
 }
 
-std::string const   Enemy::getType(void) const
+std::string const   &Enemy::getType(void) const
 {
     return (this->_type);
 }

@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 05:22:28 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/24 05:22:29 by fsidler          ###   ########.fr       */
+/*   Updated: 2018/10/05 13:04:06 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ class Enemy {
     public:
         Enemy(int hp, std::string const & type);
         Enemy(Enemy const &src);
-        virtual         ~Enemy(void);
+        virtual ~Enemy(void);
 
-        Enemy           &operator=(Enemy const &rhs);
+        Enemy				&operator=(Enemy const &rhs);
 
-        std::string const   getType(void) const;
+        std::string const   &getType(void) const;
         int                 getHP(void) const;
 
         void                setType(std::string const & type);

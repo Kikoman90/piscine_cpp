@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 05:22:04 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/24 05:22:05 by fsidler          ###   ########.fr       */
+/*   Updated: 2018/10/05 13:01:46 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ AWeapon::~AWeapon(void)
     return ;
 }
 
-AWeapon         &AWeapon::operator=(AWeapon const &rhs)
+AWeapon				&AWeapon::operator=(AWeapon const &rhs)
 {
     if (this != &rhs)
     {
@@ -38,32 +38,32 @@ AWeapon         &AWeapon::operator=(AWeapon const &rhs)
     return (*this);
 }
 
-std::string     AWeapon::getName(void) const
+std::string const	&AWeapon::getName(void) const
 {
     return (_name);
 }
 
-int             AWeapon::getAPCost(void) const
+int					AWeapon::getAPCost(void) const
 {
     return (_apcost);
 }
 
-int             AWeapon::getDamage(void) const
+int					AWeapon::getDamage(void) const
 {
     return (_damage);
 }
 
-void            AWeapon::setName(std::string const &name)
+void				AWeapon::setName(std::string const &name)
 {
     this->_name = name;
 }
 
-void            AWeapon::setDamage(int dmg)
+void				AWeapon::setDamage(int dmg)
 {
     this->_damage = dmg;
 }
 
-void            AWeapon::setAPCost(int apc)
+void				AWeapon::setAPCost(int apc)
 {
     this->_apcost = apc;
 }

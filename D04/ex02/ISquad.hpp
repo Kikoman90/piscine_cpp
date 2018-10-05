@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 20:43:32 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/29 20:43:32 by fsidler          ###   ########.fr       */
+/*   Updated: 2018/10/05 13:11:01 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class ISquad
     public:
         virtual                 ~ISquad() {}
         virtual int             getCount() const = 0;
-        virtual ISpaceMarine*   getUnit(int) = 0;
+        virtual ISpaceMarine*   getUnit(int) const = 0;
         virtual int             push(ISpaceMarine*) = 0;
 };
 

@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 05:21:39 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/24 05:21:41 by fsidler          ###   ########.fr       */
+/*   Updated: 2018/10/05 12:27:43 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Victim {
     public:
         Victim(std::string const name);
         Victim(Victim const &src);
-        ~Victim(void);
+        virtual ~Victim(void);
 
         Victim          &operator=(Victim const &rhs);
 

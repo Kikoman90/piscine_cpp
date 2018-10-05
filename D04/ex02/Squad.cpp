@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 20:43:38 by fsidler           #+#    #+#             */
-/*   Updated: 2016/12/15 17:51:32 by fsidler          ###   ########.fr       */
+/*   Updated: 2018/10/05 13:11:49 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int                     Squad::push(ISpaceMarine *SpcMarine)
     return (this->getCount());
 }
 
-ISpaceMarine            *Squad::getUnit(int index)
+ISpaceMarine            *Squad::getUnit(int index) const
 {
     t_unit    *tmp = this->_list;
 

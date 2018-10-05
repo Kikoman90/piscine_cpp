@@ -6,7 +6,7 @@
 /*   By: fsidler <fsidler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 20:43:42 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/30 20:36:54 by fsidler          ###   ########.fr       */
+/*   Updated: 2018/10/05 13:11:32 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class Squad : public ISquad {
         int                 getCount(void) const;
         int                 push(ISpaceMarine*);
 
-        ISpaceMarine        *getUnit(int);
+        ISpaceMarine        *getUnit(int) const;
 
 };
 

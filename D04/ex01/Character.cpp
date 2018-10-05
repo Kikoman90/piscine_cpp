@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 05:22:13 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/24 05:22:14 by fsidler          ###   ########.fr       */
+/*   Updated: 2018/10/05 13:06:37 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void                Character::attack(Enemy *enem)
     }
 }
 
-std::string const   Character::getName(void) const
+std::string const   &Character::getName(void) const
 {
     return (_name);
 }

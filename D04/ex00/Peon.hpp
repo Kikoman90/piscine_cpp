@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 05:21:08 by fsidler           #+#    #+#             */
-/*   Updated: 2016/11/24 05:21:09 by fsidler          ###   ########.fr       */
+/*   Updated: 2018/10/05 11:48:05 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ class Peon : public Victim {
         Peon(Peon const &src);
         ~Peon(void);
 
-        virtual void    getPolymorphed(void) const;
+        void	getPolymorphed(void) const;
 
-        Peon            &operator=(Peon const &rhs);
+        Peon	&operator=(Peon const &rhs);
 
     private:
         Peon(void);
